@@ -1,4 +1,6 @@
-package AdventureTime.Render;
+package com.AdventureTime.Render;
+
+import com.AdventureTime.Models.ModelBMO;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
@@ -10,9 +12,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderBMO extends RenderLiving {
 	private static final ResourceLocation textureLocation = new ResourceLocation(
-			"adventuretime", "textures/entity/BMO.png");
+			"adventuretime:textures/entity/BMO.png");
 
-	public RenderBMO(ModelBase par1ModelBase, float par2) {
+	public RenderBMO(ModelBMO par1ModelBase, float par2) {
 		super(par1ModelBase, par2);
 	}
 

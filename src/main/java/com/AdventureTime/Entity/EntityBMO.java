@@ -1,7 +1,8 @@
-package AdventureTime.Entity;
+package com.AdventureTime.Entity;
 
 
 import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
@@ -14,16 +15,14 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.src.ModLoader;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import net.minecraftforge.event.Event;
 
 
 public class EntityBMO extends EntityMob
 {
-    public String npcName = "BMO";
 
     public EntityBMO(World var1)
     {
@@ -57,6 +56,11 @@ public class EntityBMO extends EntityMob
     public float getMobMaxHealth()
     {
         return 16;
+    }
+    
+    public float getMobMaxSpeed()
+    {
+    	return 0.35F;
     }
 
     /**
@@ -98,9 +102,9 @@ public class EntityBMO extends EntityMob
     /**
      * Returns the sound this mob makes while it's alive.
      */
-    protected String getLivingSound()
+//    protected String getLivingSound()
     {
-        return "atime:BMO1";
+//        return "atime:BMO1";
     }
 
     /**
@@ -130,21 +134,11 @@ public class EntityBMO extends EntityMob
     /**
      * Returns the item ID for the item the mob drops on death.
      */
-    protected int getDropItemId()
+    protected Item getDropItemId()
     {
-        return Item.redstone.itemID;
+        return Items.redstone;
     }
 
-    /**
-     * Called when a player interacts with a mob. e.g. gets milk from a cow, gets into the saddle on a pig.
-     */
-    @SideOnly(Side.CLIENT)
-    public boolean interact(EntityPlayer entityplayer)
-    {
-    	
-        ModLoader.getMinecraftInstance().thePlayer.addChatMessage("Do you want to play some games?");
-        return true;
-    }
 
     /**
      * Get this Entity's EnumCreatureAttribute
@@ -159,15 +153,15 @@ public class EntityBMO extends EntityMob
         switch (this.rand.nextInt(3))
         {
             case 0:
-                this.dropItem(Item.redstone.itemID, 4);
+                this.dropItem(Items.redstone, 4);
                 break;
 
             case 1:
-                this.dropItem(Item.ingotIron.itemID, 1);
+                this.dropItem(Items.iron_ingot, 1);
                 break;
 
             case 2:
-                this.dropItem(Item.redstoneRepeater.itemID, 1);
+                this.dropItem(Items.repeater, 1);
         }
     }
 }

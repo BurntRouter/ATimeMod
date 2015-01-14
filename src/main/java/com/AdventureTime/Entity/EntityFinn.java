@@ -1,4 +1,6 @@
-package AdventureTime.Entity;
+package com.AdventureTime.Entity;
+
+import com.AdventureTime.Items.ModItems;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -26,14 +28,14 @@ import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import AdventureTime.Main.AdventureTimeMain;
 
 public class EntityFinn extends EntityMob implements IBossDisplayData
 {
     private int conversionTime = 0;
-    private static final ItemStack defaultHeldItem = new ItemStack(AdventureTimeMain.DemonSword, 1);
+    private static final ItemStack defaultHeldItem = new ItemStack(ModItems.DemonSword, 1);
     public String npcName;
 
     public EntityFinn(World var1)
@@ -96,7 +98,7 @@ public class EntityFinn extends EntityMob implements IBossDisplayData
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.25D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.50D);
     }
 
 
@@ -105,11 +107,16 @@ public class EntityFinn extends EntityMob implements IBossDisplayData
         return 40.0F;
     }
     
+    public float getMobMaxSpeed()
+    {
+    	return 1.25F;
+    }
+    
     public boolean attackEntityAsMob(Entity par1Entity)
     {
         boolean flag = super.attackEntityAsMob(par1Entity);
 
-        par1Entity.setFire(8);
+//        par1Entity.setFire(8);
 
         return flag;
     }
@@ -186,9 +193,9 @@ public class EntityFinn extends EntityMob implements IBossDisplayData
      * Returns the item ID for the item the mob drops on death.
      * @return 
      */
-	protected int getDropItemId()
+	protected Item getDropItemId()
     {
-		return AdventureTimeMain.FinnSword.itemID;
+		return ModItems.FinnSword;
     }
 
     public ItemStack getHeldItem()

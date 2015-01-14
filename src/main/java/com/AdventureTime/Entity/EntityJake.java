@@ -1,4 +1,6 @@
-package AdventureTime.Entity;
+package com.AdventureTime.Entity;
+
+import com.AdventureTime.Items.ModItems;
 
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
@@ -10,9 +12,8 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.src.ModLoader;
+import net.minecraft.item.Item;
 import net.minecraft.world.World;
-import AdventureTime.Main.AdventureTimeMain;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -75,15 +76,6 @@ public class EntityJake extends EntityMob
         this.getDataWatcher().updateObject(12, Byte.valueOf((byte)1));
     }
 
-    /**
-     * Called when a player interacts with a mob. e.g. gets milk from a cow, gets into the saddle on a pig.
-     */
-    @SideOnly(Side.CLIENT)
-   public boolean interact(EntityPlayer entityplayer)
-   {
-       ModLoader.getMinecraftInstance().thePlayer.addChatMessage("Have you seen Finn around?");
-       return true;
-   }
 
     /**
      * Returns the sound this mob makes while it's alive.
@@ -120,9 +112,9 @@ public class EntityJake extends EntityMob
     /**
      * Returns the item ID for the item the mob drops on death.
      */
-    protected int getDropItemId()
+    protected Item getDropItemId()
     {
-        return AdventureTimeMain.jakeswords.itemID;
+        return ModItems.jakesword;
     }
 
     /**
@@ -132,17 +124,22 @@ public class EntityJake extends EntityMob
     {
         return EnumCreatureAttribute.UNDEAD;
     }
+    
+    public float getMobMaxSpeed()
+    {
+    	return 1.0F;
+    }
 
     protected void dropRareDrop(int var1)
     {
         switch (this.rand.nextInt(3))
         {
             case 0:
-                this.dropItem(AdventureTimeMain.DemonSword.itemID, 1);
+                this.dropItem(ModItems.DemonSword, 1);
                 break;
 
             case 1:
-                this.dropItem(AdventureTimeMain.jakeswords.itemID, 1);
+                this.dropItem(ModItems.jakesword, 1);
                 break;
         }
     }

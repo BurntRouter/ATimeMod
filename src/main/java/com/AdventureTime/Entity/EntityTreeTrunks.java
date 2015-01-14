@@ -1,4 +1,6 @@
-package AdventureTime.Entity;
+package com.AdventureTime.Entity;
+
+import com.AdventureTime.Items.ModItems;
 
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
@@ -8,10 +10,9 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.src.ModLoader;
 import net.minecraft.world.World;
-import AdventureTime.Main.AdventureTimeMain;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -112,7 +113,6 @@ public class EntityTreeTrunks extends EntityMob {
 	/**
 	 * Plays step sound at given x, y, z for the entity
 	 */
-	@Override
 	protected void playStepSound(int var1, int var2, int var3, int var4) {
 		this.playSound("mob.zombie.step", 0.15F, 1.0F);
 	}
@@ -120,23 +120,10 @@ public class EntityTreeTrunks extends EntityMob {
 	/**
 	 * Returns the item ID for the item the mob drops on death.
 	 */
-	@Override
-	protected int getDropItemId() {
-		return Item.redstone.itemID;
+	protected Item getDropItemId() {
+		return Items.redstone;
 	}
 
-	/**
-	 * Called when a player interacts with a mob. e.g. gets milk from a cow,
-	 * gets into the saddle on a pig.
-	 */
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean interact(EntityPlayer entityplayer) {
-
-		ModLoader.getMinecraftInstance().thePlayer
-				.addChatMessage("Want some of my apple pie?");
-		return true;
-	}
 
 	/**
 	 * Get this Entity's EnumCreatureAttribute
@@ -150,7 +137,7 @@ public class EntityTreeTrunks extends EntityMob {
 	protected void dropRareDrop(int var1) {
 		switch (this.rand.nextInt(3)) {
 		case 0:
-			this.dropItem(AdventureTimeMain.applepie.itemID, 3);
+			this.dropItem(ModItems.applepie, 3);
 			break;
 		}
 	}

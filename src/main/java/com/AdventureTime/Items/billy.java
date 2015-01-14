@@ -1,14 +1,14 @@
-package AdventureTime.Items;
+package com.AdventureTime.Items;
 
-import net.minecraft.item.EnumToolMaterial;
+import com.AdventureTime.Main.ModCreativeTabs;
+
 import net.minecraft.item.ItemSword;
-import AdventureTime.Main.AdventureTimeMain;
 
 public class billy extends ItemSword {
 
-	public billy(int ItemID, EnumToolMaterial material) {
-		super(ItemID, material);
-		setCreativeTab(AdventureTimeMain.tabATimemain);
+	public billy(ToolMaterial material) {
+		super(material);
+		setCreativeTab(ModCreativeTabs.tabATime);
 	}
 
 }

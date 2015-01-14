@@ -1,4 +1,4 @@
-package AdventureTime.Entity;
+package com.AdventureTime.Entity;
 
 import java.util.Calendar;
 import java.util.UUID;
@@ -6,7 +6,6 @@ import java.util.UUID;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.EntityLivingData;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
@@ -19,13 +18,13 @@ import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
-import net.minecraft.entity.ai.attributes.Attribute;
-import net.minecraft.entity.ai.attributes.AttributeInstance;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.RangedAttribute;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -39,7 +38,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class EntityCZ3 extends EntityZombie
 {
-    protected static final Attribute field_110186_bp = (new RangedAttribute("zombie.spawnReinforcements", 0.0D, 0.0D, 1.0D)).func_111117_a("Spawn Reinforcements Chance");
+    protected static final RangedAttribute field_110186_bp = (new RangedAttribute("zombie.spawnReinforcements", 0.0D, 0.0D, 1.0D));
     private static final UUID field_110187_bq = UUID.fromString("B9766B59-9566-4402-BC1F-2EE2A276D836");
     private static final AttributeModifier field_110188_br = new AttributeModifier(field_110187_bq, "Baby speed boost", 0.5D, 1);
 
@@ -64,16 +63,6 @@ public class EntityCZ3 extends EntityZombie
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityVillager.class, 0, false));
-    }
-
-
-
-    protected void entityInit()
-    {
-        super.entityInit();
-        this.getDataWatcher().addObject(12, Byte.valueOf((byte)0));
-        this.getDataWatcher().addObject(13, Byte.valueOf((byte)0));
-        this.getDataWatcher().addObject(14, Byte.valueOf((byte)0));
     }
 
     /**
@@ -111,7 +100,6 @@ public class EntityCZ3 extends EntityZombie
      * Set whether this zombie is a child.
      */
 
-
     /**
      * Return whether this zombie is a villager.
      */
@@ -138,33 +126,12 @@ public class EntityCZ3 extends EntityZombie
         {
             float f = this.getBrightness(1.0F);
 
-            if (f > 0.5F && this.rand.nextFloat() * 30.0F < (f - 0.4F) * 2.0F && this.worldObj.canBlockSeeTheSky(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ)))
-            {
-                boolean flag = true;
-                ItemStack itemstack = this.getCurrentItemOrArmor(4);
 
-                if (itemstack != null)
-                {
-                    if (itemstack.isItemStackDamageable())
-                    {
-                        itemstack.setItemDamage(itemstack.getItemDamageForDisplay() + this.rand.nextInt(2));
-
-                        if (itemstack.getItemDamageForDisplay() >= itemstack.getMaxDamage())
-                        {
-                            this.renderBrokenItemStack(itemstack);
-                            this.setCurrentItemOrArmor(4, (ItemStack)null);
-                        }
-                    }
-
-                    flag = false;
-                }
-
-                if (flag)
+                if (getFlag(0))
                 {
                     this.setFire(8);
                 }
             }
-        }
 
         super.onLivingUpdate();
     }
@@ -219,11 +186,6 @@ public class EntityCZ3 extends EntityZombie
     {
         boolean flag = super.attackEntityAsMob(par1Entity);
 
-        if (flag && this.getHeldItem() == null && this.isBurning() && this.rand.nextFloat() < (float)this.worldObj.difficultySetting * 0.3F)
-        {
-            par1Entity.setFire(2 * this.worldObj.difficultySetting);
-        }
-
         return flag;
     }
 
@@ -262,9 +224,9 @@ public class EntityCZ3 extends EntityZombie
     /**
      * Returns the item ID for the item the mob drops on death.
      */
-    protected int getDropItemId()
+    protected Item getDropItemId()
     {
-        return Item.rottenFlesh.itemID;
+        return Items.rotten_flesh;
     }
 
     /**
@@ -275,42 +237,21 @@ public class EntityCZ3 extends EntityZombie
         return EnumCreatureAttribute.UNDEAD;
     }
 
-    protected void dropRareDrop(int par1)
+    protected void dropRareDrop(Item par1)
     {
         switch (this.rand.nextInt(3))
         {
             case 0:
-                this.dropItem(Item.ingotIron.itemID, 1);
+                this.dropItem(Items.iron_ingot, 1);
                 break;
             case 1:
-                this.dropItem(Item.carrot.itemID, 1);
+                this.dropItem(Items.carrot, 1);
                 break;
             case 2:
-                this.dropItem(Item.potato.itemID, 1);
+                this.dropItem(Items.potato, 1);
         }
     }
 
-    /**
-     * Makes entity wear random armor based on difficulty
-     */
-    protected void addRandomArmor()
-    {
-        super.addRandomArmor();
-
-        if (this.rand.nextFloat() < (this.worldObj.difficultySetting == 3 ? 0.05F : 0.01F))
-        {
-            int i = this.rand.nextInt(3);
-
-            if (i == 0)
-            {
-                this.setCurrentItemOrArmor(0, new ItemStack(Item.swordIron));
-            }
-            else
-            {
-                this.setCurrentItemOrArmor(0, new ItemStack(Item.shovelIron));
-            }
-        }
-    }
 
     /**
      * (abstract) Protected helper method to write subclass entity data to NBT.
@@ -362,13 +303,6 @@ public class EntityCZ3 extends EntityZombie
     {
         super.onKillEntity(par1EntityLivingBase);
 
-        if (this.worldObj.difficultySetting >= 2 && par1EntityLivingBase instanceof EntityVillager)
-        {
-            if (this.worldObj.difficultySetting == 2 && this.rand.nextBoolean())
-            {
-                return;
-            }
-
             EntityCZ3 entityzombie = new EntityCZ3(this.worldObj);
             entityzombie.copyLocationAndAnglesFrom(par1EntityLivingBase);
             this.worldObj.removeEntity(par1EntityLivingBase);
@@ -382,7 +316,6 @@ public class EntityCZ3 extends EntityZombie
             this.worldObj.spawnEntityInWorld(entityzombie);
             this.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1016, (int)this.posX, (int)this.posY, (int)this.posZ, 0);
         }
-    }
     /**
      * Called when a player interacts with a mob. e.g. gets milk from a cow, gets into the saddle on a pig.
      */
@@ -390,7 +323,7 @@ public class EntityCZ3 extends EntityZombie
     {
         ItemStack itemstack = par1EntityPlayer.getCurrentEquippedItem();
 
-        if (itemstack != null && itemstack.getItem() == Item.appleGold && itemstack.getItemDamage() == 0 && this.isVillager() && this.isPotionActive(Potion.weakness))
+        if (itemstack != null && itemstack.getItem() == Items.golden_apple && itemstack.getItemDamage() == 0 && this.isVillager() && this.isPotionActive(Potion.weakness))
         {
             if (!par1EntityPlayer.capabilities.isCreativeMode)
             {
@@ -424,7 +357,6 @@ public class EntityCZ3 extends EntityZombie
         this.conversionTime = par1;
         this.getDataWatcher().updateObject(14, Byte.valueOf((byte)1));
         this.removePotionEffect(Potion.weakness.id);
-        this.addPotionEffect(new PotionEffect(Potion.damageBoost.id, par1, Math.min(this.worldObj.difficultySetting - 1, 0)));
         this.worldObj.setEntityState(this, (byte)16);
     }
 
@@ -464,7 +396,6 @@ public class EntityCZ3 extends EntityZombie
     {
         EntityVillager entityvillager = new EntityVillager(this.worldObj);
         entityvillager.copyLocationAndAnglesFrom(this);
-        entityvillager.func_82187_q();
 
         if (this.isChild())
         {
@@ -475,41 +406,5 @@ public class EntityCZ3 extends EntityZombie
         this.worldObj.spawnEntityInWorld(entityvillager);
         entityvillager.addPotionEffect(new PotionEffect(Potion.confusion.id, 200, 0));
         this.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1017, (int)this.posX, (int)this.posY, (int)this.posZ, 0);
-    }
-
-    /**
-     * Return the amount of time decremented from conversionTime every tick.
-     */
-    protected int getConversionTimeBoost()
-    {
-        int i = 1;
-
-        if (this.rand.nextFloat() < 0.01F)
-        {
-            int j = 0;
-
-            for (int k = (int)this.posX - 4; k < (int)this.posX + 4 && j < 14; ++k)
-            {
-                for (int l = (int)this.posY - 4; l < (int)this.posY + 4 && j < 14; ++l)
-                {
-                    for (int i1 = (int)this.posZ - 4; i1 < (int)this.posZ + 4 && j < 14; ++i1)
-                    {
-                        int j1 = this.worldObj.getBlockId(k, l, i1);
-
-                        if (j1 == Block.fenceIron.blockID || j1 == Block.bed.blockID)
-                        {
-                            if (this.rand.nextFloat() < 0.3F)
-                            {
-                                ++i;
-                            }
-
-                            ++j;
-                        }
-                    }
-                }
-            }
-        }
-
-        return i;
     }
 }

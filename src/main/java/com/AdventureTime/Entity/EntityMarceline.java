@@ -1,4 +1,6 @@
-package AdventureTime.Entity;
+package com.AdventureTime.Entity;
+
+import com.AdventureTime.Items.ModItems;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -25,18 +27,18 @@ import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import AdventureTime.Main.AdventureTimeMain;
 
 public class EntityMarceline extends EntityMob
 {
     private int conversionTime = 0;
-    private static final ItemStack defaultHeldItem = new ItemStack(AdventureTimeMain.bass, 1);
+    private static final ItemStack defaultHeldItem = new ItemStack(ModItems.bass, 1);
 
     public EntityMarceline(World var1)
     {
@@ -77,8 +79,8 @@ public class EntityMarceline extends EntityMob
     protected void applyEntityAttributes()
     {
     	super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.35D);
-        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(12.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.35D);
+        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(12.0D);
     }
     
     public ItemStack getHeldItem()
@@ -140,33 +142,11 @@ public class EntityMarceline extends EntityMob
             if (f > 0.5F && this.rand.nextFloat() * 30.0F < (f - 0.4F) * 2.0F && this.worldObj.canBlockSeeTheSky(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ)))
             {
                 boolean flag = true;
-                ItemStack itemstack = this.getCurrentItemOrArmor(4);
-
-                if (itemstack != null)
-                {
-                    if (itemstack.isItemStackDamageable())
-                    {
-                        itemstack.setItemDamage(itemstack.getItemDamageForDisplay() + this.rand.nextInt(2));
-
-                        if (itemstack.getItemDamageForDisplay() >= itemstack.getMaxDamage())
-                        {
-                            this.renderBrokenItemStack(itemstack);
-                            this.setCurrentItemOrArmor(4, (ItemStack)null);
-                        }
-                    }
-
-                    flag = false;
-                }
-
-                if (flag)
-                {
-                    this.setFire(8);
-                }
-            }
-        }
 
         super.onLivingUpdate();
     }
+  }
+}
 
     /**
      * Returns the sound this mob makes while it's alive.
@@ -203,9 +183,9 @@ public class EntityMarceline extends EntityMob
     /**
      * Returns the item ID for the item the mob drops on death.
      */
-    protected int getDropItemId()
+    protected Item getDropItemId()
     {
-        return AdventureTimeMain.bass.itemID;
+        return ModItems.bass;
     }
 
     /**
@@ -215,27 +195,32 @@ public class EntityMarceline extends EntityMob
     {
         return EnumCreatureAttribute.UNDEAD;
     }
+    
+    public float getMobMaxSpeed()
+    {
+    	return 1.15F;
+    }
 
     protected void dropRareDrop(int var1)
     {
         switch (this.rand.nextInt(3))
         {
             case 0:
-                this.dropItem(Item.diamond.itemID, 8);
+                this.dropItem(Items.diamond, 8);
                 break;
 
             case 1:
-                this.dropItem(Item.emerald.itemID, 1);
+                this.dropItem(Items.emerald, 1);
                 break;
 
             case 2:
-                this.dropItem(Item.diamond.itemID, 10);
+                this.dropItem(Items.diamond, 10);
         }
     }
     
     protected void dropFewItems(boolean par1, int par2){
     	if(this.rand.nextInt(1) == 0){
-    		this.dropItem(AdventureTimeMain.bass.itemID, 1);
+    		this.dropItem(ModItems.bass, 1);
     	}
     }
 }

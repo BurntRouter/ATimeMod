@@ -1,4 +1,4 @@
-package AdventureTime.Entity;
+package com.AdventureTime.Entity;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -94,7 +94,7 @@ public class EntityPB extends EntityMob implements IBossDisplayData
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.25D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).getAttribute();
     }
 
 
@@ -177,6 +177,11 @@ public class EntityPB extends EntityMob implements IBossDisplayData
     protected void playStepSound(int var1, int var2, int var3, int var4)
     {
         this.playSound("mob.zombie.step", 0.15F, 1.0F);
+    }
+    
+    public float getMobMaxSpeed()
+    {
+    	return 1.0F;
     }
 
     /**

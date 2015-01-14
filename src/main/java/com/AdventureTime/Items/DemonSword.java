@@ -1,20 +1,20 @@
-package AdventureTime.Items;
+package com.AdventureTime.Items;
+
+import com.AdventureTime.Main.ModCreativeTabs;
 
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import AdventureTime.Main.AdventureTimeMain;
 
 
 // *REMEBER* Change "ItemPickaxe" to ItemAxe, ItemHoe, ItemSword, etc if you are making those tools!
 public class DemonSword extends ItemSword {
 	
-public DemonSword(int ItemID, EnumToolMaterial material){
-super(ItemID, material);
-setCreativeTab(AdventureTimeMain.tabATimemain);; }
+public DemonSword(ToolMaterial material){
+super(material);
+setCreativeTab(ModCreativeTabs.tabATime); }
 
 public boolean hitEntity(ItemStack par1ItemStack, EntityLivingBase par2EntityLivingBase, EntityLivingBase par3EntityLivingBase)
 {

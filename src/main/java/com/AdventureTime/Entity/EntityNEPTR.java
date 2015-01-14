@@ -1,4 +1,4 @@
-package AdventureTime.Entity;
+package com.AdventureTime.Entity;
 
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
@@ -7,6 +7,7 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
 
@@ -79,9 +80,14 @@ public class EntityNEPTR extends EntityMob
     /**
      * Returns the item ID for the item the mob drops on death.
      */
-    protected int getDropItemId()
+    protected Item getDropItemId()
     {
-        return Item.pumpkinPie.itemID;
+        return Items.pumpkin_pie;
+    }
+    
+    public float getMobMaxSpeed()
+    {
+    	return 0.65F;
     }
 
     protected void dropRareDrop(int var1)
@@ -89,15 +95,15 @@ public class EntityNEPTR extends EntityMob
         switch (this.rand.nextInt(3))
         {
             case 0:
-                this.dropItem(Item.redstone.itemID, 4);
+                this.dropItem(Items.redstone, 4);
                 break;
 
             case 1:
-                this.dropItem(Item.ingotIron.itemID, 1);
+                this.dropItem(Items.iron_ingot, 1);
                 break;
 
             case 2:
-                this.dropItem(Item.redstoneRepeater.itemID, 1);
+                this.dropItem(Items.repeater, 1);
         }
     }
 }

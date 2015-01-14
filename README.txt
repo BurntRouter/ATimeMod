@@ -1,19 +1,37 @@
 -------------------------------------------
-Kingdoms of Craftzoic Mod
+Source installation information for modders
 -------------------------------------------
-This mod is still under heavy development,
-You may NOT use this code to create your own version of this mod.
-You may NOT use any of the models, textures, etc. without written permission of Burnt Router who can be contacted through GitHub of through Skype at BurntRouter1011
-You MAY and are encouraged to use this code to teach yourself how to create mods.
-You MAY and are encouraged to use this code to create addons to this mod which, if to be made to the public must be approved by Burnt Router.
-This license may update and change as Burnt Router wants it to.
-This license no matter what the version of the mod, code, etc. applies. Which means this applies to every version of the mod unless updated in which the newer one will be taken in to effect.
-Licenses will have a date posted on them to identify the latest version.
+This code follows the Minecraft Forge installation methodology. It will apply
+some small patches to the vanilla MCP source code, giving you and it access 
+to some of the data and functions you need to build a successful mod.
 
-If you have any questions, comments, or concerns please feel free to contact Burnt Router at either of the following.
-Email: kbeddek@gmail.com
-Skype: BurntRouter1011
+Note also that the patches are built against "unrenamed" MCP source code (aka
+srgnames) - this means that you will not be able to read them directly against
+normal code.
 
+Source pack installation information:
 
-License version: 1.0
-License date: January 10, 2015 at 10:42AM EST
+Standalone source installation
+==============================
+
+To install this source code for development purposes, extract this zip file.
+It ships with a demonstration mod. Run 'gradlew setupDevWorkspace' to create
+a gradle environment primed with FML. Run 'gradlew eclipse' or 'gradlew idea' to
+create an IDE workspace of your choice.
+Refer to ForgeGradle for more information about the gradle environment
+Note: On macs or linux you run the './gradlew.sh' instead of 'gradlew'
+
+Forge source installation
+=========================
+MinecraftForge ships with this code and installs it as part of the forge
+installation process, no further action is required on your part.
+
+For reference this is version @MAJOR@.@MINOR@.@REV@.@BUILD@ of FML
+for Minecraft version @MCVERSION@.
+
+LexManos' Install Video
+=======================
+https://www.youtube.com/watch?v=8VEdtQLuLO0&feature=youtu.be
+
+For more details update more often refer to the Forge Forums:
+http://www.minecraftforge.net/forum/index.php/topic,14048.0.html

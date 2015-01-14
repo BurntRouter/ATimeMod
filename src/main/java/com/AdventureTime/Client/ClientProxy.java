@@ -1,50 +1,52 @@
-package AdventureTime.Client;
+package com.AdventureTime.Client;
+
+
+import com.AdventureTime.Entity.EntityBMO;
+import com.AdventureTime.Entity.EntityBilly;
+import com.AdventureTime.Entity.EntityFP;
+import com.AdventureTime.Entity.EntityFinn;
+import com.AdventureTime.Entity.EntityGunter;
+import com.AdventureTime.Entity.EntityIceKing;
+import com.AdventureTime.Entity.EntityJake;
+import com.AdventureTime.Entity.EntityLich;
+import com.AdventureTime.Entity.EntityMarceline;
+import com.AdventureTime.Entity.EntityNEPTR;
+import com.AdventureTime.Entity.EntityPB;
+import com.AdventureTime.Entity.EntityTreeTrunks;
+import com.AdventureTime.Items.ModItems;
+import com.AdventureTime.Main.AdventureTimeMain;
+import com.AdventureTime.Main.CommonProxy;
+import com.AdventureTime.Models.ModelBMO;
+import com.AdventureTime.Models.ModelBilly;
+import com.AdventureTime.Models.ModelFP;
+import com.AdventureTime.Models.ModelFinn;
+import com.AdventureTime.Models.ModelGunter;
+import com.AdventureTime.Models.ModelIceKing;
+import com.AdventureTime.Models.ModelJake;
+import com.AdventureTime.Models.ModelLich;
+import com.AdventureTime.Models.ModelMarceline;
+import com.AdventureTime.Models.ModelNEPTR;
+import com.AdventureTime.Models.ModelPB;
+import com.AdventureTime.Models.ModelTreeTrunks;
+import com.AdventureTime.Render.RenderBMO;
+import com.AdventureTime.Render.RenderBilly;
+import com.AdventureTime.Render.RenderFP;
+import com.AdventureTime.Render.RenderFinn;
+import com.AdventureTime.Render.RenderGauntlet;
+import com.AdventureTime.Render.RenderGunter;
+import com.AdventureTime.Render.RenderIceKing;
+import com.AdventureTime.Render.RenderJake;
+import com.AdventureTime.Render.RenderLich;
+import com.AdventureTime.Render.RenderMarceline;
+import com.AdventureTime.Render.RenderNEPTR;
+import com.AdventureTime.Render.RenderPB;
+import com.AdventureTime.Render.RenderTreeTrunks;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
-import AdventureTime.Entity.EntityBMO;
-import AdventureTime.Entity.EntityBilly;
-import AdventureTime.Entity.EntityFP;
-import AdventureTime.Entity.EntityFinn;
-import AdventureTime.Entity.EntityGunter;
-import AdventureTime.Entity.EntityIceKing;
-import AdventureTime.Entity.EntityJake;
-import AdventureTime.Entity.EntityLich;
-import AdventureTime.Entity.EntityMarceline;
-import AdventureTime.Entity.EntityNEPTR;
-import AdventureTime.Entity.EntityPB;
-import AdventureTime.Entity.EntityTreeTrunks;
-import AdventureTime.Main.AdventureTimeMain;
-import AdventureTime.Main.CommonProxy;
-import AdventureTime.Main.Manager.EventManager;
-import AdventureTime.Models.ModelBMO;
-import AdventureTime.Models.ModelBilly;
-import AdventureTime.Models.ModelFP;
-import AdventureTime.Models.ModelFinn;
-import AdventureTime.Models.ModelGunter;
-import AdventureTime.Models.ModelIceKing;
-import AdventureTime.Models.ModelJake;
-import AdventureTime.Models.ModelLich;
-import AdventureTime.Models.ModelMarceline;
-import AdventureTime.Models.ModelNEPTR;
-import AdventureTime.Models.ModelPB;
-import AdventureTime.Models.ModelTreeTrunks;
-import AdventureTime.Render.RenderBMO;
-import AdventureTime.Render.RenderBilly;
-import AdventureTime.Render.RenderFP;
-import AdventureTime.Render.RenderFinn;
-import AdventureTime.Render.RenderGauntlet;
-import AdventureTime.Render.RenderGunter;
-import AdventureTime.Render.RenderIceKing;
-import AdventureTime.Render.RenderJake;
-import AdventureTime.Render.RenderLich;
-import AdventureTime.Render.RenderMarceline;
-import AdventureTime.Render.RenderNEPTR;
-import AdventureTime.Render.RenderPB;
-import AdventureTime.Render.RenderTreeTrunks;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class ClientProxy extends CommonProxy {
@@ -78,23 +80,8 @@ public class ClientProxy extends CommonProxy {
 				EntityTreeTrunks.class, new RenderTreeTrunks(
 						new ModelTreeTrunks(), 0.5F));
 
-		MinecraftForgeClient.registerItemRenderer(
-				AdventureTimeMain.billygauntlet.itemID, new RenderGauntlet());
-
-		MinecraftForge.EVENT_BUS.register(new EventManager());
-
-	}
-
-	@Override
-	public Object getClientGuiElement(int ID, EntityPlayer player, World world,
-			int x, int y, int z) {
-		TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
-		if (tileEntity != null) {
-			switch (ID) {
-			case 0: /* your GUIs go here */
-			}
-		}
-		return null;
+//		MinecraftForgeClient.registerItemRenderer(
+//				ModItems.billygauntlet, new RenderGauntlet());
 
 	}
 

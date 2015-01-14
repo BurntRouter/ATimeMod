@@ -1,17 +1,16 @@
-package AdventureTime.Items;
+package com.AdventureTime.Items;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 
 public class JakeSuit extends ItemArmor {
-	public EnumArmorMaterial mat;
+	public ArmorMaterial mat;
 	private String texturePath = "adventuretime:textures/model/armor/";
 
-	public JakeSuit(int par1, EnumArmorMaterial par2EnumArmorMaterial,
+	public JakeSuit(int par1, ArmorMaterial par2EnumArmorMaterial,
 			int par3, int par4, String name) {
-		super(par1, par2EnumArmorMaterial, par3, par4);
+		super(par2EnumArmorMaterial, par3, par4);
 		mat = par2EnumArmorMaterial;
 		mat.getDamageReductionAmount(par4);
 		setMaxDamage(mat.getDurability(par4));
@@ -27,7 +26,6 @@ public class JakeSuit extends ItemArmor {
 		}
 	}
 
-	@Override
 	public String getArmorTexture(ItemStack stack, Entity ent, int slot,
 			int layer) {
 		return texturePath;

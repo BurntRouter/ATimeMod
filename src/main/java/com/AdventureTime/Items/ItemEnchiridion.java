@@ -1,15 +1,17 @@
-package AdventureTime.Items;
+package com.AdventureTime.Items;
+
+import com.AdventureTime.Main.AdventureTimeMain;
+import com.AdventureTime.Main.ModCreativeTabs;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import AdventureTime.Main.AdventureTimeMain;
 
 public class ItemEnchiridion extends Item {
 	public ItemEnchiridion(int par1) {
-		super(par1);
-		setCreativeTab(AdventureTimeMain.tabATimemain);
+		super();
+		setCreativeTab(ModCreativeTabs.tabATime);
 	}
 
 	@Override

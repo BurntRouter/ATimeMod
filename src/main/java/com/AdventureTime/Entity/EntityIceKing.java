@@ -1,4 +1,4 @@
-package AdventureTime.Entity;
+package com.AdventureTime.Entity;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -13,8 +13,9 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.src.ModLoader;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -76,7 +77,7 @@ public class EntityIceKing extends EntityMob
         int i = MathHelper.floor_double(this.posX);
         int j = MathHelper.floor_double(this.posZ);
 
-        if (this.worldObj.getBiomeGenForCoords(i, j).getFloatTemperature() > 1.0F)
+        if (this.worldObj.getBiomeGenForCoords(i, j).getFloatTemperature(10, 10, 10) > 1.0F)
         {
             this.attackEntityFrom(DamageSource.onFire, 1.0F);
         }
@@ -87,22 +88,13 @@ public class EntityIceKing extends EntityMob
             int k = MathHelper.floor_double(this.posY);
             int l = MathHelper.floor_double(this.posZ + (double)((float)(i / 2 % 2 * 2 - 1) * 0.25F));
 
-            if (this.worldObj.getBlockId(j, k, l) == 0 && this.worldObj.getBiomeGenForCoords(j, l).getFloatTemperature() < 0.8F && Block.snow.canPlaceBlockAt(this.worldObj, j, k, l))
+            if (this.worldObj.getBlockMetadata(j, k, l) == 0 && this.worldObj.getBiomeGenForCoords(j, l).getFloatTemperature(10, 10, 10) < 0.8F && Blocks.snow.canPlaceBlockAt(this.worldObj, j, k, l))
             {
-                this.worldObj.setBlock(j, k, l, Block.snow.blockID);
+                this.worldObj.setBlock(j, k, l, Blocks.snow);
             }
         }
     }
 
-    /**
-     * Called when a player interacts with a mob. e.g. gets milk from a cow, gets into the saddle on a pig.
-     */
-    @SideOnly(Side.CLIENT)
-    public boolean interact(EntityPlayer entityplayer)
-    {
-        ModLoader.getMinecraftInstance().thePlayer.addChatMessage("Hey do you know any princesses?");
-        return true;
-    }
 
     /**
      * Returns the current armor value as determined by a call to InventoryPlayer.getTotalArmorValue
@@ -175,9 +167,9 @@ public class EntityIceKing extends EntityMob
     /**
      * Returns the item ID for the item the mob drops on death.
      */
-    protected int getDropItemId()
+    protected Item getDropItemId()
     {
-        return Item.swordDiamond.itemID;
+        return Items.diamond_sword;
     }
 
     /**
@@ -187,21 +179,22 @@ public class EntityIceKing extends EntityMob
     {
         return EnumCreatureAttribute.UNDEAD;
     }
+    
+    public float getMobMaxSpeed()
+    {
+    	return 0.80F;
+    }
 
     protected void dropRareDrop(int var1)
     {
         switch (this.rand.nextInt(3))
         {
             case 0:
-                this.dropItem(Item.snowball.itemID, 4);
+                this.dropItem(Items.snowball, 4);
                 break;
 
             case 1:
-                this.dropItem(Block.ice.blockID, 1);
-                break;
-
-            case 2:
-                this.dropItem(Item.snowball.itemID, 10);
+                this.dropItem(Items.snowball, 10);
         }
     }
 }

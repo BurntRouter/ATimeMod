@@ -1,4 +1,4 @@
-package AdventureTime.Entity;
+package com.AdventureTime.Entity;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -10,6 +10,7 @@ import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
 
@@ -89,9 +90,19 @@ public class EntityGunter extends EntityCreature
     /**
      * Returns the item ID for the item the mob drops on death.
      */
-    protected int getDropItemId()
+    protected Item getDropItemId()
     {
-        return Item.snowball.itemID;
+        return Items.snowball;
+    }
+    
+    public float getMobMaxHealth()
+    {
+    	return 20F;
+    }
+    
+    public float getMobMaxSpeed()
+    {
+    	return 0.65F;
     }
 
     protected void dropRareDrop(int var1)
@@ -99,15 +110,15 @@ public class EntityGunter extends EntityCreature
         switch (this.rand.nextInt(3))
         {
             case 0:
-                this.dropItem(Item.snowball.itemID, 4);
+                this.dropItem(Items.snowball, 4);
                 break;
 
             case 1:
-                this.dropItem(Item.snowball.itemID, 1);
+                this.dropItem(Items.snowball, 1);
                 break;
 
             case 2:
-                this.dropItem(Item.snowball.itemID, 1);
+                this.dropItem(Items.snowball, 1);
         }
     }
 }

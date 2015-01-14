@@ -1,4 +1,4 @@
-package AdventureTime.Entity;
+package com.AdventureTime.Entity;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityFlying;
@@ -6,6 +6,7 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityLargeFireball;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.stats.AchievementList;
@@ -71,15 +72,11 @@ public class EntityLich extends EntityFlying implements IMob {
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)
-				.setAttribute(10.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(200);
 	}
 
 	@Override
 	protected void updateEntityActionState() {
-		if (!this.worldObj.isRemote && this.worldObj.difficultySetting == 0) {
-			this.setDead();
-		}
 
 		this.despawnEntity();
 		this.prevAttackCounter = this.attackCounter;
@@ -234,9 +231,8 @@ public class EntityLich extends EntityFlying implements IMob {
 	/**
 	 * Returns the item ID for the item the mob drops on death.
 	 */
-	@Override
-	protected int getDropItemId() {
-		return Item.gunpowder.itemID;
+	protected Item getDropItemId() {
+		return Items.gunpowder;
 	}
 
 	/**
@@ -250,13 +246,13 @@ public class EntityLich extends EntityFlying implements IMob {
 		int k;
 
 		for (k = 0; k < j; ++k) {
-			this.dropItem(Item.ghastTear.itemID, 1);
+			this.dropItem(Items.ghast_tear, 1);
 		}
 
 		j = this.rand.nextInt(3) + this.rand.nextInt(1 + par2);
 
 		for (k = 0; k < j; ++k) {
-			this.dropItem(Item.gunpowder.itemID, 1);
+			this.dropItem(Items.gunpowder, 1);
 		}
 	}
 
@@ -274,8 +270,7 @@ public class EntityLich extends EntityFlying implements IMob {
 	 */
 	@Override
 	public boolean getCanSpawnHere() {
-		return this.rand.nextInt(20) == 0 && super.getCanSpawnHere()
-				&& this.worldObj.difficultySetting > 0;
+		return this.rand.nextInt(20) == 0 && super.getCanSpawnHere();
 	}
 
 	/**

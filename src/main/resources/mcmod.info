@@ -1,16 +1,19 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
-  "url": "",
-  "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
-  "logoFile": "",
-  "screenshots": [],
-  "dependencies": []
+"modid": "AdventureTime",
+"name": "Adventure Time Mod",
+"description": "The AdventureTime Mod V5.2",
+"version": "",
+"credits": "Created by Koslaw99",
+"logoFile": "logo.png",
+"mcversion": "1.6.4",
+"url": "http://atimemod.info",
+"updateUrl": "",
+"authors": [ "Koslaw99, Cypherion" ],
+"parent":"",
+"screenshots": [],
+"dependencies": [
+"mod_MinecraftForge"
+]
 }
 ]

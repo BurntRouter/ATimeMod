@@ -1,6 +1,7 @@
-package AdventureTime.Render;
+package com.AdventureTime.Render;
 
-import AdventureTime.Models.ModelIceKing;
+import com.AdventureTime.Models.ModelIceKing;
+
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
@@ -11,7 +12,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderIceKing extends RenderLiving
 {
-    private static final ResourceLocation textureLocation = new ResourceLocation("adventuretime","textures/entity/IceKing.png");
+    private static final ResourceLocation textureLocation = new ResourceLocation("adventuretime:textures/entity/IceKing.png");
 
     public RenderIceKing(ModelIceKing par1ModelBase, float par2)
     {

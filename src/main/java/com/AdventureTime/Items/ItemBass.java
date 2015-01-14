@@ -1,4 +1,4 @@
-package AdventureTime.Items;
+package com.AdventureTime.Items;
 
 import java.util.List;
 
@@ -8,15 +8,16 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
-import AdventureTime.Main.AdventureTimeMain;
 
+import com.AdventureTime.Main.AdventureTimeMain;
+import com.AdventureTime.Main.ModCreativeTabs;
 import com.google.common.collect.Multimap;
 
 import cpw.mods.fml.relauncher.Side;
@@ -25,16 +26,16 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemBass extends Item
 {
     private float weaponDamage;
-    private final EnumToolMaterial toolMaterial;
+    private final ToolMaterial toolMaterial;
 
-    public ItemBass(int par1, EnumToolMaterial material)
+    public ItemBass(int par1, ToolMaterial material)
     {
-        super(par1);
+        super();
         this.toolMaterial = material;
         this.maxStackSize = 1;
         this.setMaxDamage(material.getMaxUses());
         this.weaponDamage = 8.0F + material.getDamageVsEntity();
-		setCreativeTab(AdventureTimeMain.tabATimemain);
+		setCreativeTab(ModCreativeTabs.tabATime);
     }
 
     public float func_82803_g()
@@ -58,14 +59,14 @@ public class ItemBass extends Item
      */
     public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block)
     {
-        if (par2Block.blockID == Block.web.blockID)
+        if (par2Block == Blocks.web)
         {
             return 15.0F;
         }
         else
         {
-            Material material = par2Block.blockMaterial;
-            return material != Material.plants && material != Material.vine && material != Material.coral && material != Material.leaves && material != Material.pumpkin ? 1.0F : 1.5F;
+            Material material = par2Block.getMaterial();
+            return material != Material.plants && material != Material.vine && material != Material.coral && material != Material.leaves ? 1.0F : 1.5F;
         }
     }
 
@@ -79,16 +80,6 @@ public class ItemBass extends Item
        par2EntityLivingBase.addPotionEffect(new PotionEffect(Potion.wither.id, 200, 2));
         return true;
       }
-
-    public boolean onBlockDestroyed(ItemStack par1ItemStack, World par2World, int par3, int par4, int par5, int par6, EntityLivingBase par7EntityLivingBase)
-    {
-        if ((double)Block.blocksList[par3].getBlockHardness(par2World, par4, par5, par6) != 0.0D)
-        {
-            par1ItemStack.damageItem(2, par7EntityLivingBase);
-        }
-
-        return true;
-    }
 
     @SideOnly(Side.CLIENT)
 
@@ -130,7 +121,7 @@ public class ItemBass extends Item
      */
     public boolean canHarvestBlock(Block par1Block)
     {
-        return par1Block.blockID == Block.web.blockID;
+        return par1Block == Blocks.web;
     }
 
     /**
@@ -146,13 +137,6 @@ public class ItemBass extends Item
         return this.toolMaterial.toString();
     }
 
-    /**
-     * Return whether this item is repairable in an anvil.
-     */
-    public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
-    {
-        return this.toolMaterial.getToolCraftingMaterial() == par2ItemStack.itemID ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
-    }
     
     public Multimap getItemAttributeModifiers()
     {

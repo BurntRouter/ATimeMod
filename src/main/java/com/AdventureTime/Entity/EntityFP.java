@@ -1,4 +1,4 @@
-package AdventureTime.Entity;
+package com.AdventureTime.Entity;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -26,6 +26,8 @@ import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityLargeFireball;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
@@ -157,7 +159,7 @@ public class EntityFP extends EntityMob
         int i = MathHelper.floor_double(this.posX);
         int j = MathHelper.floor_double(this.posZ);
 
-        if (this.worldObj.getBiomeGenForCoords(i, j).getFloatTemperature() < 0.2F)
+        if (this.worldObj.getBiomeGenForCoords(i, j).getFloatTemperature(j, j, j) < 0.2F)
         {
             this.attackEntityFrom(DamageSource.onFire, 1.0F);
         }
@@ -168,9 +170,9 @@ public class EntityFP extends EntityMob
             int k = MathHelper.floor_double(this.posY);
             int l = MathHelper.floor_double(this.posZ + (double)((float)(i / 2 % 2 * 2 - 1) * 0.25F));
 
-            if (this.worldObj.getBlockId(j, k, l) == 0 && this.worldObj.getBiomeGenForCoords(j, l).getFloatTemperature() < 0.8F && Block.fire.canPlaceBlockAt(this.worldObj, j, k, l))
+            if (this.worldObj.getBlockMetadata(j, k, l) == 0 && this.worldObj.getBiomeGenForCoords(j, l).getFloatTemperature(j, k, l) < 0.8F && Blocks.fire.canPlaceBlockAt(this.worldObj, j, k, l))
             {
-                this.worldObj.setBlock(j, k, l, Block.fire.blockID);
+                this.worldObj.setBlock(j, k, l, Blocks.fire);
             }
         }
     }
@@ -223,9 +225,9 @@ public class EntityFP extends EntityMob
     /**
      * Returns the item ID for the item the mob drops on death.
      */
-    protected int getDropItemId()
+    protected Block getDropItemId()
     {
-        return Block.fire.blockID;
+        return Blocks.fire;
     }
 
     /**
@@ -240,21 +242,22 @@ public class EntityFP extends EntityMob
     {
         this.isImmuneToFire = true;
     }
+    
+    public float getMobMaxSpeed()
+    {
+    	return 1.15F;
+    }
 
     protected void dropRareDrop(int var1)
     {
         switch (this.rand.nextInt(3))
         {
             case 0:
-                this.dropItem(Block.fire.blockID, 1);
+                this.dropItem(Items.emerald, 1);
                 break;
 
             case 1:
-                this.dropItem(Item.emerald.itemID, 1);
-                break;
-
-            case 2:
-                this.dropItem(Item.diamond.itemID, 4);
+                this.dropItem(Items.diamond, 4);
         }
     }
 }

@@ -1,6 +1,7 @@
-package AdventureTime.Render;
+package com.AdventureTime.Render;
 
-import AdventureTime.Models.ModelBilly;
+import com.AdventureTime.Models.ModelBilly;
+
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
@@ -11,7 +12,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderBilly extends RenderLiving
 {
-    private static final ResourceLocation textureLocation = new ResourceLocation("adventuretime","textures/entity/Billy.png");
+    private static final ResourceLocation textureLocation = new ResourceLocation("adventuretime:textures/entity/Billy.png");
 
     public RenderBilly(ModelBilly par1ModelBase, float par2)
     {

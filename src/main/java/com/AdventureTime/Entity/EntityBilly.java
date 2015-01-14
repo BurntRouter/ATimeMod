@@ -1,13 +1,16 @@
-package AdventureTime.Entity;
+package com.AdventureTime.Entity;
+
+import com.AdventureTime.Items.ModItems;
+import com.AdventureTime.Main.AdventureTimeMain;
 
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.boss.IBossDisplayData;
 import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import AdventureTime.Main.AdventureTimeMain;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -20,27 +23,16 @@ public class EntityBilly extends EntityMob implements IBossDisplayData
     public EntityBilly(World par1World)
     {
         super(par1World);
-        this.chest = new ItemStack(Item.plateDiamond, 1);
-        this.sword = new ItemStack(AdventureTimeMain.billygauntlet, 1);
+        this.chest = new ItemStack(Items.diamond_chestplate, 1);
+        this.sword = new ItemStack(ModItems.billygauntlet, 1);
         this.i = 0;
         this.setHealth(this.getMaxHealth());
 
-        if (this.worldObj.difficultySetting == 3)
-        {
-            EnchantmentHelper.addRandomEnchantment(this.rand, this.sword, 30);
-            EnchantmentHelper.addRandomEnchantment(this.rand, this.chest, 30);
-        }
-        else
-        {
-            EnchantmentHelper.addRandomEnchantment(this.rand, this.sword, 20);
-            EnchantmentHelper.addRandomEnchantment(this.rand, this.chest, 20);
-        }
-
         this.setCurrentItemOrArmor(0, this.sword);
-        this.setCurrentItemOrArmor(1, new ItemStack(Item.helmetDiamond));
+        this.setCurrentItemOrArmor(1, new ItemStack(Items.diamond_helmet));
         this.setCurrentItemOrArmor(3, this.chest);
-        this.setCurrentItemOrArmor(2, new ItemStack(Item.legsDiamond));
-        this.setCurrentItemOrArmor(4, new ItemStack(Item.bootsDiamond));
+        this.setCurrentItemOrArmor(2, new ItemStack(Items.diamond_leggings));
+        this.setCurrentItemOrArmor(4, new ItemStack(Items.diamond_boots));
 
         for (int i = 0; i < 5; ++i)
         {
@@ -64,9 +56,9 @@ public class EntityBilly extends EntityMob implements IBossDisplayData
     /**
      * Returns the item ID for the item the mob drops on death.
      */
-    protected int getDropItemId()
+    protected Item getDropItemId()
     {
-        return Item.swordDiamond.itemID;
+        return Items.diamond_sword;
     }
 
     /**
@@ -97,10 +89,9 @@ public class EntityBilly extends EntityMob implements IBossDisplayData
      */
     protected void addRandomArmor() {}
     
-    protected void applyEntityAttributes()
+    public float getMaxMoveSpeed()
     {
-        super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.15D);
+       return 0.55F;
     }
 
     /**
@@ -116,10 +107,5 @@ public class EntityBilly extends EntityMob implements IBossDisplayData
     	if (f==0){
     		updateEntityActionState();
     	}
-    }
-    @SideOnly(Side.CLIENT)
-    public float getBossHealth()
-    {
-        return this.getMaxHealth();
     }
 }

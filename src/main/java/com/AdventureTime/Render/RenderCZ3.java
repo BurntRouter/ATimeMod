@@ -1,4 +1,6 @@
-package AdventureTime.Render;
+package com.AdventureTime.Render;
+
+import com.AdventureTime.Models.ModelCandyZombie3;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
@@ -10,9 +12,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderCZ3 extends RenderLiving
 {
-    private static final ResourceLocation textureLocation = new ResourceLocation("atime","textures/entity/CandyZombie3.png");
+    private static final ResourceLocation textureLocation = new ResourceLocation("adventuretime:CandyZombie3");
 
-    public RenderCZ3(ModelBase par1ModelBase, float par2)
+    public RenderCZ3(ModelCandyZombie3 par1ModelBase, float par2)
     {
         super(par1ModelBase, par2);
     }

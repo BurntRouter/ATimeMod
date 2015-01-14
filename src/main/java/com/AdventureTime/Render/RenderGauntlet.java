@@ -1,4 +1,4 @@
-package AdventureTime.Render;
+package com.AdventureTime.Render;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
@@ -7,7 +7,7 @@ import net.minecraftforge.client.IItemRenderer;
 
 import org.lwjgl.opengl.GL11;
 
-import AdventureTime.Models.ModelGauntlet;
+import com.AdventureTime.Models.ModelGauntlet;
 
 /**
  * The class used to render the Gauntlet item.

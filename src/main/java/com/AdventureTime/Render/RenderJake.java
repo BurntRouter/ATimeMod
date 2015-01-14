@@ -1,6 +1,6 @@
-package AdventureTime.Render;
+package com.AdventureTime.Render;
 
-import AdventureTime.Models.ModelJake;
+import com.AdventureTime.Models.ModelJake;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
@@ -11,7 +11,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderJake extends RenderLiving
 {
-    private static final ResourceLocation textureLocation = new ResourceLocation("adventuretime","textures/entity/Jake.png");
+    private static final ResourceLocation textureLocation = new ResourceLocation("adventuretime:textures/entity/Jake.png");
 
     public RenderJake(ModelJake par1ModelBase, float par2)
     {

@@ -1,8 +1,9 @@
-package AdventureTime.Main.Manager;
+package com.AdventureTime.Main.Manager;
+
+import com.AdventureTime.GUI.EnchiridionGUI;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
-import AdventureTime.GUI.EnchiridionGUI;
 import cpw.mods.fml.common.network.IGuiHandler;
 
 public class GUIHandler implements IGuiHandler {

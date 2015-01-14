@@ -1,4 +1,4 @@
-package AdventureTime.Main;
+package com.AdventureTime.Main;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
@@ -26,7 +26,7 @@ public class CommonProxy implements IGuiHandler {
 	        @Override
 	        public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	        {
-	        TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
+	        TileEntity tileEntity = world.getTileEntity(x, y, z);
 
 	        if(tileEntity != null)
 	        {

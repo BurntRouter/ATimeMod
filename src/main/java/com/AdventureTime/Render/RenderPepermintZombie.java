@@ -1,6 +1,7 @@
-package AdventureTime.Render;
+package com.AdventureTime.Render;
 
-import AdventureTime.Models.ModelPepermintZombie;
+import com.AdventureTime.Models.ModelPepermintZombie;
+
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
@@ -11,7 +12,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderPepermintZombie extends RenderLiving
 {
-    private static final ResourceLocation textureLocation = new ResourceLocation("atime","textures/entity/Zombie.png");
+    private static final ResourceLocation textureLocation = new ResourceLocation("adventuretime:Zombie");
 
     public RenderPepermintZombie(ModelPepermintZombie par1ModelBase, float par2)
     {
