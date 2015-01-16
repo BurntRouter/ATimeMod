@@ -114,7 +114,7 @@ public class EntityJake extends EntityMob
      */
     protected Item getDropItemId()
     {
-        return ModItems.jakesword;
+        return ModItems.JakeSword;
     }
 
     /**
@@ -139,7 +139,7 @@ public class EntityJake extends EntityMob
                 break;
 
             case 1:
-                this.dropItem(ModItems.jakesword, 1);
+                this.dropItem(ModItems.JakeSword, 1);
                 break;
         }
     }

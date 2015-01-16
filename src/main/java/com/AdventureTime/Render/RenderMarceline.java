@@ -32,16 +32,14 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderMarceline extends RenderLiving
 {
-    private static final ResourceLocation textureLocation = new ResourceLocation("adventuretime:textures/entity/Marceline.png");
-	
+    private static final ResourceLocation textureLocation = new ResourceLocation("adventuretime:Marceline");
+
     protected ModelMarceline modelMarcelineMain;
     protected float field_77070_b;
     protected ModelMarceline field_82423_g;
     protected ModelMarceline field_82425_h;
     private static final Map field_110859_k = Maps.newHashMap();
 
-    /** List of armor texture filenames. */
-    public static String[] MarcelineArmorFilenamePrefix = new String[] {"leather", "chainmail", "iron", "diamond", "gold"};
 
     public RenderMarceline(ModelMarceline par1ModelMarceline, float par2)
     {
@@ -62,26 +60,6 @@ public class RenderMarceline extends RenderLiving
         this.field_82425_h = new ModelMarceline();
     }
 
-    @Deprecated //Use the more sensitve version getArmorResource below
-    public static ResourceLocation func_110857_a(ItemArmor par0ItemArmor, int par1)
-    {
-        return func_110858_a(par0ItemArmor, par1, (String)null);
-    }
-
-    @Deprecated //Use the more sensitve version getArmorResource below
-    public static ResourceLocation func_110858_a(ItemArmor par0ItemArmor, int par1, String par2Str)
-    {
-        String s1 = String.format("textures/models/armor/%s_layer_%d%s.png", new Object[] {MarcelineArmorFilenamePrefix[par0ItemArmor.renderIndex], Integer.valueOf(par1 == 2 ? 2 : 1), par2Str == null ? "" : String.format("_%s", new Object[]{par2Str})});
-        ResourceLocation resourcelocation = (ResourceLocation)field_110859_k.get(s1);
-
-        if (resourcelocation == null)
-        {
-            resourcelocation = new ResourceLocation(s1);
-            field_110859_k.put(s1, resourcelocation);
-        }
-
-        return resourcelocation;
-    }
 
     /**
      * More generic ForgeHook version of the above function, it allows for Items to have more control over what texture they provide.
@@ -92,45 +70,7 @@ public class RenderMarceline extends RenderLiving
      * @param type Subtype, can be null or "overlay"
      * @return ResourceLocation pointing at the armor's texture
      */
-    public static ResourceLocation getArmorResource(Entity entity, ItemStack stack, int slot, String type)
-    {
-        ItemArmor item = (ItemArmor)stack.getItem();
-        String s1 = String.format("textures/models/armor/%s_layer_%d%s.png", 
-                MarcelineArmorFilenamePrefix[item.renderIndex], (slot == 2 ? 2 : 1), type == null ? "" : String.format("_%s", type));
-        
-        s1 = ForgeHooksClient.getArmorTexture(entity, stack, s1, slot, type);
-        ResourceLocation resourcelocation = (ResourceLocation)field_110859_k.get(s1);
 
-        if (resourcelocation == null)
-        {
-            resourcelocation = new ResourceLocation(s1);
-            field_110859_k.put(s1, resourcelocation);
-        }
-
-        return resourcelocation;
-    }
-
-    protected void func_130013_c(EntityLiving par1EntityLiving, int par2, float par3)
-    {
-        ItemStack itemstack = par1EntityLiving.func_130225_q(3 - par2);
-
-        if (itemstack != null)
-        {
-            Item item = itemstack.getItem();
-
-            if (item instanceof ItemArmor)
-            {
-                this.bindTexture(getArmorResource(par1EntityLiving, itemstack, par2, "overlay"));
-                float f1 = 1.0F;
-                GL11.glColor3f(f1, f1, f1);
-            }
-        }
-    }
-
-    protected ResourceLocation func_110856_a(EntityLiving par1EntityLiving)
-    {
-        return null;
-    }
 
     protected void func_130005_c(EntityLiving par1EntityLiving, float par2)
     {

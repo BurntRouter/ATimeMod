@@ -2,14 +2,14 @@
 {
 "modid": "AdventureTime",
 "name": "Adventure Time Mod",
-"description": "The AdventureTime Mod V5.2",
+"description": "The AdventureTime Mod V6.0",
 "version": "",
 "credits": "Created by Koslaw99",
 "logoFile": "logo.png",
-"mcversion": "1.6.4",
+"mcversion": "1.7.10",
 "url": "http://atimemod.info",
 "updateUrl": "",
-"authors": [ "Koslaw99, Cypherion" ],
+"authors": [ "Koslaw99" ],
 "parent":"",
 "screenshots": [],
 "dependencies": [

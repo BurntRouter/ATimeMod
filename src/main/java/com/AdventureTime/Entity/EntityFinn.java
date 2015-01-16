@@ -195,7 +195,7 @@ public class EntityFinn extends EntityMob implements IBossDisplayData
      */
 	protected Item getDropItemId()
     {
-		return ModItems.FinnSword;
+		return ModItems.Scarlet;
     }
 
     public ItemStack getHeldItem()

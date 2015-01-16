@@ -59,7 +59,7 @@ public class EntityGunter extends EntityCreature
      */
     protected String getLivingSound()
     {
-        return "AdventureTime:wenkOnce";
+        return null;
     }
 
     /**
@@ -67,7 +67,7 @@ public class EntityGunter extends EntityCreature
      */
     protected String getHurtSound()
     {
-        return "AdventureTime:wenkDouble";
+        return null;
     }
 
     /**
@@ -76,7 +76,7 @@ public class EntityGunter extends EntityCreature
     @SideOnly(Side.CLIENT)
     protected String getDeathSound()
     {
-        return "AdventureTime:wenkDouble";
+        return null;
     }
 
     /**

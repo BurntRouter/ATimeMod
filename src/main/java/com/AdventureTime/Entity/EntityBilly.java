@@ -24,7 +24,7 @@ public class EntityBilly extends EntityMob implements IBossDisplayData
     {
         super(par1World);
         this.chest = new ItemStack(Items.diamond_chestplate, 1);
-        this.sword = new ItemStack(ModItems.billygauntlet, 1);
+        this.sword = new ItemStack(ModItems.BillyGauntlet, 1);
         this.i = 0;
         this.setHealth(this.getMaxHealth());
 

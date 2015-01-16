@@ -48,20 +48,23 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import cpw.mods.fml.relauncher.SideOnly;
+import cpw.mods.fml.relauncher.Side;
 
-public class ClientProxy extends CommonProxy {
+@SideOnly(Side.CLIENT)
+public class ClientProxy extends CommonProxy{
 
 	@Override
 	public void registerRenderers() {
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityGunter.class,
-				new RenderGunter(new ModelGunter(), 0.3F));
+//		RenderingRegistry.registerEntityRenderingHandler(EntityGunter.class,
+//				new RenderGunter(new ModelGunter(), 0.3F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityFinn.class,
 				new RenderFinn(new ModelFinn(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityIceKing.class,
 				new RenderIceKing(new ModelIceKing(), 0.6F));
-		RenderingRegistry.registerEntityRenderingHandler(EntityMarceline.class,
-				new RenderMarceline(new ModelMarceline(), 0.5F));
+//		RenderingRegistry.registerEntityRenderingHandler(EntityMarceline.class,
+//				new RenderMarceline(new ModelMarceline(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityJake.class,
 				new RenderJake(new ModelJake(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityBMO.class,
@@ -76,12 +79,11 @@ public class ClientProxy extends CommonProxy {
 				new RenderPB(new ModelPB(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityLich.class,
 				new RenderLich(new ModelLich(), 0.5F));
-		RenderingRegistry.registerEntityRenderingHandler(
-				EntityTreeTrunks.class, new RenderTreeTrunks(
-						new ModelTreeTrunks(), 0.5F));
+//		RenderingRegistry.registerEntityRenderingHandler(EntityTreeTrunks.class,
+	//			new RenderTreeTrunks(new ModelTreeTrunks(), 0.5F));
 
-//		MinecraftForgeClient.registerItemRenderer(
-//				ModItems.billygauntlet, new RenderGauntlet());
+		MinecraftForgeClient.registerItemRenderer(
+				ModItems.BillyGauntlet, new RenderGauntlet());
 
 	}
 

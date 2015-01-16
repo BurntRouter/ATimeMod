@@ -10,7 +10,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class RenderGunter extends RenderLiving {
-	private static final ResourceLocation textureLocation = new ResourceLocation("adventuretime:textures/entity/Gunter.png");
+	private static final ResourceLocation textureLocation = new ResourceLocation("adventuretime:Gunter.png");
 
 	public RenderGunter(ModelGunter par1ModelBase, float par2) {
 		super(par1ModelBase, par2);

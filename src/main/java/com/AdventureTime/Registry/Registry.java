@@ -18,47 +18,47 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 public class Registry extends GameRegistry {
 	public static void mainRegistry() {
 
-		Registry.addRecipe(new ItemStack(ModItems.foodbacon, 1), " P ", " P ",
+		Registry.addRecipe(new ItemStack(ModItems.Bacon, 1), " P ", " P ",
 				" P ", Character.valueOf('P'), Items.porkchop);
 
-		Registry.addRecipe(new ItemStack(ModItems.rootSword, 1), " s ", " s ",
+		Registry.addRecipe(new ItemStack(ModItems.RootSword, 1), " s ", " s ",
 				"srs", Character.valueOf('s'), ModItems.SteelIngot,
 				Character.valueOf('r'), Blocks.sapling);
 
-		Registry.addRecipe(new ItemStack(ModItems.pancake, 1), "   ", " m ", "fff",
-				Character.valueOf('f'), ModItems.flour, Character.valueOf('m'),
+		Registry.addRecipe(new ItemStack(ModItems.Pancake, 1), "   ", " m ", "fff",
+				Character.valueOf('f'), ModItems.Flour, Character.valueOf('m'),
 				Items.milk_bucket);
 
 		Registry.addToolsetRecipe(ModItems.CrystalGem, ModItems.CrystalSword,
-				ModItems.CrystalShovel, ModItems.CrystalPicaxe, ModItems.CrystalHoe,
+				ModItems.CrystalShovel, ModItems.CrystalPickaxe, ModItems.CrystalHoe,
 				ModItems.CrystalAxe);
 
-		Registry.addVerticleRecipe(ModItems.DemonSword, ModItems.demoningot,
-				ModItems.demoningot, Items.stick);
+		Registry.addVerticleRecipe(ModItems.DemonSword, ModItems.DemonIngot,
+				ModItems.DemonIngot, Items.stick);
 
-		Registry.addRecipe(new ItemStack(ModItems.foodGemApple, 1), "xxx", "xyx",
+		Registry.addRecipe(new ItemStack(ModItems.GemApple, 1), "xxx", "xyx",
 				"xxx", Character.valueOf('x'), ModItems.CrystalGem,
 				Character.valueOf('y'), Items.apple);
 
-		Registry.addShapelessRecipe(new ItemStack(ModItems.baconpancake, 1),
-				ModItems.foodbacon, ModItems.pancake);
+		Registry.addShapelessRecipe(new ItemStack(ModItems.BaconPancake, 1),
+				ModItems.Bacon, ModItems.Pancake);
 
-		Registry.addShapelessRecipe(new ItemStack(Blocks.ice, 1), ModItems.shardIce);
+		Registry.addShapelessRecipe(new ItemStack(Blocks.ice, 1), ModItems.IceShard);
 
-		Registry.addShapelessRecipe(new ItemStack(ModItems.shardIce, 1), Blocks.ice);
+		Registry.addShapelessRecipe(new ItemStack(ModItems.IceShard, 1), Blocks.ice);
 
-		Registry.addShapelessRecipe(new ItemStack(ModItems.bubblegumitem, 1),
+		Registry.addShapelessRecipe(new ItemStack(ModItems.BubbleGum, 1),
 				Items.sugar, Items.water_bucket);
 
-		Registry.addVerticleRecipe(ModItems.jakesword, ModItems.SteelIngot, Items.stick,
+		Registry.addVerticleRecipe(ModItems.JakeSword, ModItems.SteelIngot, Items.stick,
 				Items.stick);
 
 		Registry.addRecipe(new ItemStack(ModItems.Lollipop, 1), " c ", " s ",
-				Character.valueOf('c'), ModItems.candy, Character.valueOf('s'),
+				Character.valueOf('c'), ModItems.Candy, Character.valueOf('s'),
 				Items.stick);
 
-		Registry.addSmelting(ModItems.bubblegumitem,
-				new ItemStack(ModItems.candy), 0.1f);
+		Registry.addSmelting(ModItems.BubbleGum,
+				new ItemStack(ModItems.Candy), 0.1f);
 
 		Registry.addRecipe(new ItemStack(ModBlocks.CrystalBlock, 1), "ccc", "ccc",
 				"ccc", Character.valueOf('c'), ModItems.CrystalGem);
@@ -67,24 +67,24 @@ public class Registry extends GameRegistry {
 				new ItemStack(ModItems.SteelIngot), 0.1f);
 
 		Registry.addSmelting(ModBlocks.DemonOre,
-				new ItemStack(ModItems.Demonblood), 0.1f);
+				new ItemStack(ModItems.DemonBlood), 0.1f);
 
-		Registry.addSmelting(ModBlocks.CandyOre, new ItemStack(ModItems.candy),
+		Registry.addSmelting(ModBlocks.CandyOre, new ItemStack(ModItems.Candy),
 				0.1F);
 
-		Registry.addRecipe(new ItemStack(ModItems.demoningot, 1), "ddd", "ddd",
-				"ddd", Character.valueOf('d'), ModItems.Demonblood);
+		Registry.addRecipe(new ItemStack(ModItems.DemonIngot, 1), "ddd", "ddd",
+				"ddd", Character.valueOf('d'), ModItems.DemonBlood);
 
-		Registry.addShapelessRecipe(new ItemStack(ModItems.flour, 1), Items.wheat);
+		Registry.addShapelessRecipe(new ItemStack(ModItems.Flour, 1), Items.wheat);
 
-		Registry.addRecipe(new ItemStack(ModItems.fourdsword, 1), "ede", "ede",
+		Registry.addRecipe(new ItemStack(ModItems.FourDSword, 1), "ede", "ede",
 				"ese", Character.valueOf('e'), Items.ender_pearl,
 				Character.valueOf('d'), Items.diamond, Character.valueOf('s'),
 				Items.stick);
 
-		Registry.addRecipe(new ItemStack(ModItems.conttoncandy), "sss", "scs",
+		Registry.addRecipe(new ItemStack(ModItems.CottonCandy), "sss", "scs",
 				" t ", Character.valueOf('s'), Items.string,
-				Character.valueOf('c'), ModItems.candy, Character.valueOf('t'),
+				Character.valueOf('c'), ModItems.Candy, Character.valueOf('t'),
 				Items.stick);
 
 	}

@@ -38,7 +38,7 @@ import net.minecraft.world.World;
 public class EntityMarceline extends EntityMob
 {
     private int conversionTime = 0;
-    private static final ItemStack defaultHeldItem = new ItemStack(ModItems.bass, 1);
+    private static final ItemStack defaultHeldItem = new ItemStack(ModItems.BassAxe, 1);
 
     public EntityMarceline(World var1)
     {
@@ -61,14 +61,6 @@ public class EntityMarceline extends EntityMob
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityWither.class, 0, false, false));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityWolf.class, 0, false, false));
-    }
-
-    protected void entityInit()
-    {
-        super.entityInit();
-        this.getDataWatcher().addObject(12, Byte.valueOf((byte)0));
-        this.getDataWatcher().addObject(13, Byte.valueOf((byte)0));
-        this.getDataWatcher().addObject(14, Byte.valueOf((byte)0));
     }
 
     public float getMobMaxHealth()
@@ -185,7 +177,7 @@ public class EntityMarceline extends EntityMob
      */
     protected Item getDropItemId()
     {
-        return ModItems.bass;
+        return ModItems.BassAxe;
     }
 
     /**
@@ -220,7 +212,7 @@ public class EntityMarceline extends EntityMob
     
     protected void dropFewItems(boolean par1, int par2){
     	if(this.rand.nextInt(1) == 0){
-    		this.dropItem(ModItems.bass, 1);
+    		this.dropItem(ModItems.BassAxe, 1);
     	}
     }
 }

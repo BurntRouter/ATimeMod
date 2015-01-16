@@ -10,7 +10,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderTreeTrunks extends RenderLiving {
 	private static final ResourceLocation textureLocation = new ResourceLocation(
-			"adventuretime:textures/entity/TreeTrunks.png");
+			"adventuretime:TreeTrunks");
 
 	public RenderTreeTrunks(ModelTreeTrunks par1ModelBase, float par2) {
 		super(par1ModelBase, par2);

@@ -137,7 +137,7 @@ public class EntityTreeTrunks extends EntityMob {
 	protected void dropRareDrop(int var1) {
 		switch (this.rand.nextInt(3)) {
 		case 0:
-			this.dropItem(ModItems.applepie, 3);
+			this.dropItem(ModItems.ApplePie, 3);
 			break;
 		}
 	}

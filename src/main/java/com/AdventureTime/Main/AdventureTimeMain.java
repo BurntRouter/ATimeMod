@@ -25,7 +25,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
 
-@Mod(modid = "AdventureTime", name = "Adventure Time Mod", version = "6.0")
+@Mod(modid = "AdventureTime", name = "AdventureTime Mod", version = "6.0")
 public class AdventureTimeMain {
 
 	@Instance("AdventureTime")
@@ -46,8 +46,8 @@ public class AdventureTimeMain {
 			"LowPower", 2, 500, 6.0F, 6, 15);
 	public static ToolMaterial DemonTools = EnumHelper.addToolMaterial(
 			"HighPower", 3, 1100, 8.0F, 6, 15);
-	public static ToolMaterial root = EnumHelper.addToolMaterial("Root", 3,
-			700, 7.0F, 6, 15);
+	public static ToolMaterial root = EnumHelper.addToolMaterial(
+			"Root", 3,700, 7.0F, 6, 15);
 	
 	
 
@@ -59,20 +59,26 @@ public class AdventureTimeMain {
 
 		@EventHandler
 		public void preInit(FMLPreInitializationEvent event){
-			
+			System.out.println("[AdventureTime Mod] Attempting to load mod... Crossing fingers...");
 			ModCreativeTabs.initTabs();
 			ModItems.mainRegistry();
 			ModBlocks.mainRegistry();
-//			Registry.mainRegistry();
+			Registry.mainRegistry();
 			WorldGenManager.mainRegistry();
-			ModEntities.mainRegistry();
+
 			
 			proxy.registerRenderers();
+		}
+		
+		@EventHandler
+		public void Init(FMLInitializationEvent event){
+			ModEntities.mainRegistry();
+			System.out.println("[AdventureTime Mod] Got through the hard part... Let's finish it...");
 		}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-		
+		System.out.println("[AdventureTime Mod] Mod seems to have loaded... Mathematical!");
 	}
 
 }

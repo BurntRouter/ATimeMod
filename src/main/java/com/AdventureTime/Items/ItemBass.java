@@ -28,7 +28,7 @@ public class ItemBass extends Item
     private float weaponDamage;
     private final ToolMaterial toolMaterial;
 
-    public ItemBass(int par1, ToolMaterial material)
+    public ItemBass(ToolMaterial material)
     {
         super();
         this.toolMaterial = material;
