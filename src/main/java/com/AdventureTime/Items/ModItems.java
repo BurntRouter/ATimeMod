@@ -26,7 +26,7 @@ public class ModItems {
 	
 	public static void initItems(){
 		Scarlet = new ItemSword(AdventureTimeMain.Finntools).setCreativeTab(ModCreativeTabs.tabATime).setUnlocalizedName("Scarlet").setTextureName("adventuretime:Scarlet");
-		CrystalGem = new Item().setCreativeTab(ModCreativeTabs.tabATime).setUnlocalizedName("CrystalGem").setTextureName("adventuretime:crystalgem");
+		CrystalGem = new Item().setCreativeTab(ModCreativeTabs.tabATime).setUnlocalizedName("CrystalGem").setTextureName("adventuretime:CrystalGem");
 		CrystalAxe = new ATimeAxe(AdventureTimeMain.CrystalTools).setCreativeTab(ModCreativeTabs.tabATime).setUnlocalizedName("CrystalAxe").setTextureName("adventuretime:CrystalAxe");
 		CrystalHoe = new ATimeHoe(AdventureTimeMain.CrystalTools).setCreativeTab(ModCreativeTabs.tabATime).setUnlocalizedName("CrystalHoe").setTextureName("adventuretime:CrystalHoe");
 		CrystalPickaxe = new ATimePickaxe(AdventureTimeMain.CrystalTools).setCreativeTab(ModCreativeTabs.tabATime).setUnlocalizedName("CrystalPickaxe").setTextureName("adventuretime:CrystalPickaxe");

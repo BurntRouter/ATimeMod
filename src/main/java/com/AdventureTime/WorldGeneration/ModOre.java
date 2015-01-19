@@ -51,8 +51,10 @@ public class ModOre implements IWorldGenerator{
 	}
 
 	private void genOverworld(Random random, int chunkX , int chunkZ, World world) {	
-		addOre(ModBlocks.CrystalOre, Blocks.stone, random, world, chunkX, chunkZ, 20, 25, 4, 6, 50);
-//		addOre(ModBlocks.CandyOre, Blocks.stone, random, world, chunkX, chunkZ, 10, 35, 3, 7 ,50);
+		addOre(ModBlocks.CrystalOre, Blocks.stone, random, world, chunkX, chunkZ, 6, 25, 4, 6, 50);
+		addOre(ModBlocks.CandyOre, Blocks.stone, random, world, chunkX, chunkZ, 10, 35, 3, 7 ,50);
+		addOre(ModBlocks.DemonOre, Blocks.stone, random, world, chunkX, chunkZ, 3, 20, 3, 7 ,50);
+		addOre(ModBlocks.SteelOre, Blocks.stone, random, world, chunkX, chunkZ, 11, 50, 3, 7 ,50);
 	}
 
 	private void genEnd(Random random, int chunkX, int chunkZ, World world) {

@@ -117,13 +117,6 @@ public class EntityJake extends EntityMob
         return ModItems.JakeSword;
     }
 
-    /**
-     * Get this Entity's EnumCreatureAttribute
-     */
-    public EnumCreatureAttribute getCreatureAttribute()
-    {
-        return EnumCreatureAttribute.UNDEAD;
-    }
     
     public float getMobMaxSpeed()
     {

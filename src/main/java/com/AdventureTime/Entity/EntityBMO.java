@@ -138,16 +138,7 @@ public class EntityBMO extends EntityMob
     {
         return Items.redstone;
     }
-
-
-    /**
-     * Get this Entity's EnumCreatureAttribute
-     */
-    public EnumCreatureAttribute getCreatureAttribute()
-    {
-        return EnumCreatureAttribute.UNDEAD;
-    }
-
+    
     protected void dropRareDrop(int var1)
     {
         switch (this.rand.nextInt(3))

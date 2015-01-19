@@ -171,14 +171,6 @@ public class EntityIceKing extends EntityMob
     {
         return Items.diamond_sword;
     }
-
-    /**
-     * Get this Entity's EnumCreatureAttribute
-     */
-    public EnumCreatureAttribute getCreatureAttribute()
-    {
-        return EnumCreatureAttribute.UNDEAD;
-    }
     
     public float getMobMaxSpeed()
     {

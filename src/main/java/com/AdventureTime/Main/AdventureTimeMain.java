@@ -25,7 +25,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
 
-@Mod(modid = "AdventureTime", name = "AdventureTime Mod", version = "6.0")
+@Mod(modid = "AdventureTime", name = "AdventureTime Mod", version = "6.1")
 public class AdventureTimeMain {
 
 	@Instance("AdventureTime")

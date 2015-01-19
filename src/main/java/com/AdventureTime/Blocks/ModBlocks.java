@@ -16,7 +16,8 @@ public class ModBlocks {
 		initBlocks();
 		regBlocks();
 	}
-	public static Block CrystalOre, SteelOre, DemonOre, CrystalBlock, CandyOre;
+	public static Block CrystalOre, SteelOre, DemonOre, CrystalBlock, CandyOre, CottonCandyLog, CottonCandyLeaves,
+	CottonCandySapling;
 	
 	public static void initBlocks(){
 		CrystalOre = new CrystalOre(Material.rock).setBlockName("CrystalOre").setBlockTextureName("adventuretime:CrystalOre").setHardness(7);
@@ -24,6 +25,7 @@ public class ModBlocks {
 		SteelOre = new ATimeBlock(Material.rock).setBlockName("SteelOre").setBlockTextureName("adventuretime:SteelOre").setHardness(6);
 		CrystalBlock = new ATimeBlock(Material.glass).setBlockName("CrystalBlock").setBlockTextureName("adventuretime:CrystalBlock").setHardness(7);
 		DemonOre = new ATimeBlock(Material.iron).setBlockName("DemonOre").setBlockTextureName("adventuretime:DemonOre").setHardness(10);
+		CottonCandyLog = new CottonCandyLog(null, null, null, 0, 0, null);
 	}
 	 
 	public static void regBlocks(){

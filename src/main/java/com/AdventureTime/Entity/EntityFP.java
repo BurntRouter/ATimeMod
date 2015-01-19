@@ -229,14 +229,6 @@ public class EntityFP extends EntityMob
     {
         return Blocks.fire;
     }
-
-    /**
-     * Get this Entity's EnumCreatureAttribute
-     */
-    public EnumCreatureAttribute getCreatureAttribute()
-    {
-        return EnumCreatureAttribute.UNDEAD;
-    }
     
     protected void EntityPigZombie(World par1World)
     {
