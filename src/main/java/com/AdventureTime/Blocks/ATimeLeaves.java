@@ -1,17 +1,18 @@
 package com.AdventureTime.Blocks;
 
 import java.util.Random;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
-public class ModLeaves extends ATimeBlock {
-
-	public ModLeaves(Material mat) {
+public class ATimeLeaves extends ATimeBlock {
+	public ATimeLeaves(Material mat, String tex, String name, float hard,
+			float resist, SoundType sound) {
 		super(mat);
 		setLightOpacity(1);
 		setTickRandomly(true);
@@ -34,7 +35,6 @@ public class ModLeaves extends ATimeBlock {
 			int p_149749_4_, Block p_149749_5_, int p_149749_6_) {
 		byte b0 = 1;
 		int i1 = b0 + 1;
-
 		if (p_149749_1_.checkChunksExist(p_149749_2_ - i1, p_149749_3_ - i1,
 				p_149749_4_ - i1, p_149749_2_ + i1, p_149749_3_ + i1,
 				p_149749_4_ + i1)) {
@@ -58,11 +58,10 @@ public class ModLeaves extends ATimeBlock {
 	public boolean isLeaves(IBlockAccess world, int x, int y, int z) {
 		return true;
 	}
-	
+
 	@Override
-	public int quantityDropped(Random rand){
+	public int quantityDropped(Random rand) {
 		int dropCount = rand.nextInt(4) + 1;
 		return dropCount;
 	}
-
 }

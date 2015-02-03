@@ -17,7 +17,7 @@ public class ModBlocks {
 		regBlocks();
 	}
 	public static Block CrystalOre, SteelOre, DemonOre, CrystalBlock, CandyOre, CottonCandyLog, CottonCandyLeaves,
-	CottonCandySapling;
+	CottonCandySapling, CandiedDirt;
 	
 	public static void initBlocks(){
 		CrystalOre = new CrystalOre(Material.rock).setBlockName("CrystalOre").setBlockTextureName("adventuretime:CrystalOre").setHardness(7);
@@ -25,7 +25,10 @@ public class ModBlocks {
 		SteelOre = new ATimeBlock(Material.rock).setBlockName("SteelOre").setBlockTextureName("adventuretime:SteelOre").setHardness(6);
 		CrystalBlock = new ATimeBlock(Material.glass).setBlockName("CrystalBlock").setBlockTextureName("adventuretime:CrystalBlock").setHardness(7);
 		DemonOre = new ATimeBlock(Material.iron).setBlockName("DemonOre").setBlockTextureName("adventuretime:DemonOre").setHardness(10);
-		CottonCandyLog = new CottonCandyLog(null, null, null, 0, 0, null);
+		CottonCandyLog = new ATimeBlock(Material.wood).setBlockName("CottonCandyLog").setBlockTextureName("adventuretime:CottonCandyLog").setHardness(3);
+		CottonCandyLeaves = new CCLeaves().setBlockName("CottonCandyLeaves").setBlockTextureName("adventuretime:CottonCandyLeaves").setHardness(1);
+		CottonCandySapling = new CCSapling().setBlockName("CottonCandySapling").setBlockTextureName("adventuretime:CottonCandySapling").setHardness(0);
+		CandiedDirt = new ATimeBlock(Material.grass).setBlockName("CandiedDirt").setBlockTextureName("adventuretime:CandiedDirt");
 	}
 	 
 	public static void regBlocks(){
@@ -34,6 +37,10 @@ public class ModBlocks {
 		GameRegistry.registerBlock(SteelOre, "SteelOre").getUnlocalizedName().substring(5);
 		GameRegistry.registerBlock(CrystalBlock, "CrystalBlock").getUnlocalizedName().substring(5);
 		GameRegistry.registerBlock(DemonOre, "DemonOre").getUnlocalizedName().substring(5);
+		GameRegistry.registerBlock(CottonCandyLog, "CottonCandyLog").getUnlocalizedName().substring(5);
+		GameRegistry.registerBlock(CottonCandyLeaves, "CottonCandyLeaves").getUnlocalizedName().substring(5);
+		GameRegistry.registerBlock(CottonCandySapling, "CottonCandySapling").getUnlocalizedName().substring(5);
+		GameRegistry.registerBlock(CandiedDirt, "CandiedDirt").getUnlocalizedName().substring(5);
 	}
 
 }

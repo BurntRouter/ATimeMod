@@ -2,18 +2,17 @@ package com.AdventureTime.WorldGeneration;
 
 import java.util.Random;
 
-import com.AdventureTime.Blocks.ModBlocks;
-
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 
-public class WorldGenCottonCandyTree {
+import com.AdventureTime.Blocks.ModBlocks;
 
-	public WorldGenCottonCandyTree() {
+public class WorldGenCCTree {
+	public WorldGenCCTree() {
 	}
 
 	public boolean generate(World world, Random rand, int i, int j, int k) {
-		if (world.getBlock(i + 2, j - 1, k + 2) == Blocks.dirt
+		if (world.getBlock(i + 2, j - 1, k + 2) == Blocks.netherrack
 				&& world.getBlock(i + 3, j, k + 2) == Blocks.air
 				&& world.getBlock(i, j + 5, k) == Blocks.air
 				&& world.getBlock(i + 3, j + 5, k + 3) == Blocks.air
@@ -50,7 +49,6 @@ public class WorldGenCottonCandyTree {
 			world.setBlock(i + 4, j + 2, k + 1, ModBlocks.CottonCandyLeaves);
 			world.setBlock(i + 4, j + 2, k + 3, ModBlocks.CottonCandyLeaves);
 		}
-
 		return true;
 	}
 }

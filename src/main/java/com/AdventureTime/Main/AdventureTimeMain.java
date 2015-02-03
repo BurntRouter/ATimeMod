@@ -4,7 +4,9 @@ import com.AdventureTime.Blocks.ModBlocks;
 import com.AdventureTime.Entity.ModEntities;
 import com.AdventureTime.Items.ModItems;
 import com.AdventureTime.Registry.Registry;
-import com.AdventureTime.WorldGeneration.WorldGenManager;
+import com.AdventureTime.WorldGeneration.ModOre;
+import com.AdventureTime.WorldGeneration.WorldGenCCTree;
+
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -22,6 +24,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
 
@@ -64,7 +67,7 @@ public class AdventureTimeMain {
 			ModItems.mainRegistry();
 			ModBlocks.mainRegistry();
 			Registry.mainRegistry();
-			WorldGenManager.mainRegistry();
+			GameRegistry.registerWorldGenerator(new ModOre(), 1);
 
 			
 			proxy.registerRenderers();
