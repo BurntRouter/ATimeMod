@@ -27,6 +27,7 @@ public class ModBlocks {
 		DemonOre = new ATimeBlock(Material.iron).setUnlocalizedName("DemonOre").setHardness(10);
 		CottonCandyLog = new ATimeBlock(Material.wood).setUnlocalizedName("CottonCandyLog").setHardness(3);
 		CandiedDirt = new ATimeBlock(Material.grass).setUnlocalizedName("CandiedDirt");
+		System.out.println("[AdventureTime Mod] All Above/3 Sqr(Swag) / 53 1/4");
 	}
 	 
 	public static void regBlocks(){
