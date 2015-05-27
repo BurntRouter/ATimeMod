@@ -3,7 +3,7 @@ package com.AdventureTime.Main;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import cpw.mods.fml.common.network.IGuiHandler;
+import net.minecraftforge.fml.common.network.IGuiHandler;
 
 
 
@@ -26,7 +26,7 @@ public class CommonProxy implements IGuiHandler {
 	        @Override
 	        public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	        {
-	        TileEntity tileEntity = world.getTileEntity(x, y, z);
+	        TileEntity tileEntity = world.getTileEntity(null);
 
 	        if(tileEntity != null)
 	        {

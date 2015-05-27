@@ -15,18 +15,14 @@ import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
-import cpw.mods.fml.relauncher.Side;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.Mod.Instance;
+import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @Mod(modid = "AdventureTime", name = "AdventureTime Mod", version = "6.1")
 public class AdventureTimeMain {
@@ -35,7 +31,7 @@ public class AdventureTimeMain {
 	public static AdventureTimeMain instance;
 
 	public static final ArmorMaterial jakearmor = EnumHelper
-			.addArmorMaterial("jakearmor", 200, new int[] { 3, 8, 6, 3 }, 30);
+			.addArmorMaterial("jakearmor", null, 200, new int[] { 3, 8, 6, 3 }, 30);
 
 	public static ToolMaterial billy = EnumHelper.addToolMaterial(
 			"HighPower", 3, 2000, 8.0F, 10, 18);

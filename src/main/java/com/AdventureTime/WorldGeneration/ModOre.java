@@ -9,13 +9,13 @@ import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
-import cpw.mods.fml.common.IWorldGenerator;
+import net.minecraftforge.fml.common.IWorldGenerator;
 
 public class ModOre implements IWorldGenerator{
 
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
-		switch(world.provider.dimensionId){
+		switch(world.provider.getDimensionId()){
 		case -1:
 			genNether(random, chunkX * 16, chunkZ * 16, world);
 			break;
