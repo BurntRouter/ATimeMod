@@ -5,50 +5,31 @@ import com.AdventureTime.Entity.EntityBMO;
 import com.AdventureTime.Entity.EntityBilly;
 import com.AdventureTime.Entity.EntityFP;
 import com.AdventureTime.Entity.EntityFinn;
-import com.AdventureTime.Entity.EntityGunter;
 import com.AdventureTime.Entity.EntityIceKing;
 import com.AdventureTime.Entity.EntityJake;
-import com.AdventureTime.Entity.EntityLich;
-import com.AdventureTime.Entity.EntityMarceline;
 import com.AdventureTime.Entity.EntityNEPTR;
 import com.AdventureTime.Entity.EntityPB;
-import com.AdventureTime.Entity.EntityTreeTrunks;
 import com.AdventureTime.Items.ModItems;
-import com.AdventureTime.Main.AdventureTimeMain;
 import com.AdventureTime.Main.CommonProxy;
 import com.AdventureTime.Models.ModelBMO;
 import com.AdventureTime.Models.ModelBilly;
 import com.AdventureTime.Models.ModelFP;
 import com.AdventureTime.Models.ModelFinn;
-import com.AdventureTime.Models.ModelGunter;
 import com.AdventureTime.Models.ModelIceKing;
 import com.AdventureTime.Models.ModelJake;
-import com.AdventureTime.Models.ModelLich;
-import com.AdventureTime.Models.ModelMarceline;
 import com.AdventureTime.Models.ModelNEPTR;
 import com.AdventureTime.Models.ModelPB;
-import com.AdventureTime.Models.ModelTreeTrunks;
 import com.AdventureTime.Render.RenderBMO;
 import com.AdventureTime.Render.RenderBilly;
 import com.AdventureTime.Render.RenderFP;
 import com.AdventureTime.Render.RenderFinn;
 import com.AdventureTime.Render.RenderGauntlet;
-import com.AdventureTime.Render.RenderGunter;
 import com.AdventureTime.Render.RenderIceKing;
 import com.AdventureTime.Render.RenderJake;
-import com.AdventureTime.Render.RenderLich;
-import com.AdventureTime.Render.RenderMarceline;
 import com.AdventureTime.Render.RenderNEPTR;
 import com.AdventureTime.Render.RenderPB;
-import com.AdventureTime.Render.RenderTreeTrunks;
-
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ClientProxy extends CommonProxy{
 
@@ -74,8 +55,8 @@ public class ClientProxy extends CommonProxy{
 				new RenderBilly(new ModelBilly(), 1.0F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityPB.class,
 				new RenderPB(new ModelPB(), 0.5F));
-		RenderingRegistry.registerEntityRenderingHandler(EntityLich.class,
-				new RenderLich(new ModelLich(), 0.5F));
+//		RenderingRegistry.registerEntityRenderingHandler(EntityLich.class,
+//				new RenderLich(new ModelLich(), 0.5F));
 //		RenderingRegistry.registerEntityRenderingHandler(EntityTreeTrunks.class,
 	//			new RenderTreeTrunks(new ModelTreeTrunks(), 0.5F));
 

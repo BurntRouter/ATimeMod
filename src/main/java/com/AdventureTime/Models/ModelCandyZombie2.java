@@ -175,16 +175,10 @@ public class ModelCandyZombie2 extends ModelBase
     public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity par7Entity)
     {
         super.setRotationAngles(f, f1, f2, f3, f4, f5, par7Entity);
-        float f6 = MathHelper.sin(this.onGround * (float)Math.PI);
-        float f7 = MathHelper.sin((1.0F - (1.0F - this.onGround) * (1.0F - this.onGround)) * (float)Math.PI);
         this.hand_1.rotateAngleZ = 0.2F;
         this.hand_2.rotateAngleZ = 0.2F;
-        this.hand_1.rotateAngleY = -(0.1F - f6 * 0.6F);
-        this.hand_2.rotateAngleY = 0.1F - f6 * 0.6F;
         this.hand_1.rotateAngleX = -((float)Math.PI / 2F);
         this.hand_2.rotateAngleX = -((float)Math.PI / 2F);
-        this.hand_1.rotateAngleX -= f6 * 1.2F - f7 * 0.4F;
-        this.hand_2.rotateAngleX -= f6 * 1.2F - f7 * 0.4F;
         this.hand_1.rotateAngleZ += MathHelper.cos(f2 * 0.09F) * 0.05F + 0.05F;
         this.hand_2.rotateAngleZ -= MathHelper.cos(f2 * 0.09F) * 0.05F + 0.05F;
         this.hand_1.rotateAngleX += MathHelper.sin(f2 * 0.067F) * 0.05F;

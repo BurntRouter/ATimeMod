@@ -1,18 +1,14 @@
 package com.AdventureTime.Entity;
 
 import com.AdventureTime.Items.ModItems;
-import com.AdventureTime.Main.AdventureTimeMain;
-
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.boss.IBossDisplayData;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntityBilly extends EntityMob implements IBossDisplayData
 {

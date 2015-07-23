@@ -1,28 +1,21 @@
 package com.AdventureTime.Entity;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.Block;
-import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAIMoveThroughVillage;
-import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 public class EntityIceKing extends EntityMob
 {
-    private int conversionTime = 0;
+    @SuppressWarnings("unused")
+	private int conversionTime = 0;
     public String npcName;
 
     public EntityIceKing(World var1)
@@ -33,10 +26,6 @@ public class EntityIceKing extends EntityMob
         this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));
         this.tasks.addTask(4, new EntityAIAttackOnCollide(this, 0.3D, true));
-        this.getNavigator().setAvoidsWater(true);
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityFinn.class, 0, false, false));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityJake.class, 0, false, false));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityFP.class, 0, false, false));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
     }
 
@@ -59,40 +48,6 @@ public class EntityIceKing extends EntityMob
     public float getMobMaxHealth()
     {
         return 30.0F;
-    }
-
-    /**
-     * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons
-     * use this to react to sunlight and start to burn.
-     */
-    public void onLivingUpdate()
-    {
-        super.onLivingUpdate();
-
-        if (this.isWet())
-        {
-            this.attackEntityFrom(DamageSource.drown, 1.0F);
-        }
-
-        int i = MathHelper.floor_double(this.posX);
-        int j = MathHelper.floor_double(this.posZ);
-
-        if (this.worldObj.getBiomeGenForCoords(i, j).getFloatTemperature(10, 10, 10) > 1.0F)
-        {
-            this.attackEntityFrom(DamageSource.onFire, 1.0F);
-        }
-
-        for (i = 0; i < 4; ++i)
-        {
-            j = MathHelper.floor_double(this.posX + (double)((float)(i % 2 * 2 - 1) * 0.25F));
-            int k = MathHelper.floor_double(this.posY);
-            int l = MathHelper.floor_double(this.posZ + (double)((float)(i / 2 % 2 * 2 - 1) * 0.25F));
-
-            if (this.worldObj.getBlockMetadata(j, k, l) == 0 && this.worldObj.getBiomeGenForCoords(j, l).getFloatTemperature(10, 10, 10) < 0.8F && Blocks.snow.canPlaceBlockAt(this.worldObj, j, k, l))
-            {
-                this.worldObj.setBlock(j, k, l, Blocks.snow);
-            }
-        }
     }
 
 

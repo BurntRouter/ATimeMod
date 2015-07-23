@@ -16,7 +16,6 @@ public class EntityNEPTR extends EntityMob
     public EntityNEPTR(World var1)
     {
         super(var1);
-        this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(6, new EntityAIWander(this, 0.2D));
         this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));

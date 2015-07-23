@@ -2,11 +2,9 @@ package com.AdventureTime.Entity;
 
 import com.AdventureTime.Items.ModItems;
 
-import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
-import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
@@ -14,23 +12,17 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class EntityJake extends EntityMob
 {
-    private int conversionTime = 0;
-
     public EntityJake(World var1)
     {
         super(var1);
-        this.getNavigator().setBreakDoors(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(6, new EntityAIWander(this, 0.3D));
         this.tasks.addTask(4, new EntityAIAttackOnCollide(this, 0.4D, true));
         this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityIceKing.class, 0, false, false));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
     }
 

@@ -6,7 +6,6 @@ import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAIMoveIndoors;
-import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAIOpenDoor;
 import net.minecraft.entity.ai.EntityAIRestrictOpenDoor;
 import net.minecraft.entity.ai.EntityAIWander;
@@ -31,7 +30,6 @@ import net.minecraft.world.World;
 
 public class EntityPB extends EntityMob implements IBossDisplayData
 {
-    private int conversionTime = 0;
     public String npcName;
 
     public EntityPB(World var1)
@@ -40,7 +38,6 @@ public class EntityPB extends EntityMob implements IBossDisplayData
         this.tasks.addTask(33, new EntityAIWander(this, 0.3D));
         this.tasks.addTask(32, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.tasks.addTask(31, new EntityAILookIdle(this));
-        this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(35, new EntityAIMoveIndoors(this));
         this.tasks.addTask(36, new EntityAIRestrictOpenDoor(this));
         this.tasks.addTask(43, new EntityAIOpenDoor(this, true));
@@ -58,19 +55,6 @@ public class EntityPB extends EntityMob implements IBossDisplayData
         this.tasks.addTask(26, new EntityAIAttackOnCollide(this, EntityIceKing.class, 1.0D, true));
         this.tasks.addTask(26, new EntityAIAttackOnCollide(this, EntityDragon.class, 1.0D, true));
         this.tasks.addTask(27, new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.0D, false));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntitySkeleton.class, 0, false, false));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityZombie.class, 0, false, false));
-        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget(this, EntityCreeper.class, 0, false, false));
-        this.targetTasks.addTask(5, new EntityAINearestAttackableTarget(this, EntityPigZombie.class, 0, false, false));
-        this.targetTasks.addTask(6, new EntityAINearestAttackableTarget(this, EntityEnderman.class, 0, false, false));
-        this.targetTasks.addTask(7, new EntityAINearestAttackableTarget(this, EntitySpider.class, 0, false, false));
-        this.targetTasks.addTask(8, new EntityAINearestAttackableTarget(this, EntitySlime.class, 0, false, false));
-        this.targetTasks.addTask(9, new EntityAINearestAttackableTarget(this, EntityMagmaCube.class, 0, false, false));
-        this.targetTasks.addTask(10, new EntityAINearestAttackableTarget(this, EntityCaveSpider.class, 0, false, false));
-        this.targetTasks.addTask(11, new EntityAINearestAttackableTarget(this, EntityBlaze.class, 0, false, false));
-        this.targetTasks.addTask(12, new EntityAINearestAttackableTarget(this, EntityWither.class, 0, false, false));
-        this.targetTasks.addTask(13, new EntityAINearestAttackableTarget(this, EntityIceKing.class, 0, false, false));
-        this.targetTasks.addTask(14, new EntityAINearestAttackableTarget(this, EntityDragon.class, 0, false, false));
         //this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityLich.class, 0, false, false));       
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
     }

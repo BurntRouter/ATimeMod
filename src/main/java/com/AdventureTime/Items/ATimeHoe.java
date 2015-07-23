@@ -1,6 +1,5 @@
 package com.AdventureTime.Items;
 
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemHoe;
 
 public class ATimeHoe extends ItemHoe {

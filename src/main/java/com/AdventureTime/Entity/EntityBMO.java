@@ -1,13 +1,6 @@
 package com.AdventureTime.Entity;
 
 
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAIPanic;
@@ -17,7 +10,6 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 
@@ -27,8 +19,6 @@ public class EntityBMO extends EntityMob
     public EntityBMO(World var1)
     {
         super(var1);
-        this.getNavigator().setBreakDoors(true);
-        this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(6, new EntityAIWander(this, 0.2D));
         this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));

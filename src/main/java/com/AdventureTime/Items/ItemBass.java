@@ -15,13 +15,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.AdventureTime.Main.AdventureTimeMain;
 import com.AdventureTime.Main.ModCreativeTabs;
 import com.google.common.collect.Multimap;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBass extends Item
 {
@@ -43,7 +41,8 @@ public class ItemBass extends Item
         return this.toolMaterial.getDamageVsEntity();
     }
 
-    @SideOnly(Side.CLIENT)
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+	@SideOnly(Side.CLIENT)
 
     /**
      * allows items to add custom lines of information to the mouseover description
@@ -96,7 +95,7 @@ public class ItemBass extends Item
      */
     public EnumAction getItemUseAction(ItemStack par1ItemStack)
     {
-        return EnumAction.block;
+        return EnumAction.BLOCK;
     }
 
     /**
@@ -138,10 +137,11 @@ public class ItemBass extends Item
     }
 
     
-    public Multimap getItemAttributeModifiers()
+    @SuppressWarnings({ "rawtypes", "unchecked", "deprecation" })
+	public Multimap getItemAttributeModifiers()
     {
         Multimap multimap = super.getItemAttributeModifiers();
-        multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", (double)this.weaponDamage, 0));
+        multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(itemModifierUUID, "Weapon modifier", (double)this.weaponDamage, 0));
         return multimap;
     }
 }

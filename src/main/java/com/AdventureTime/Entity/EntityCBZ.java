@@ -1,13 +1,9 @@
 package com.AdventureTime.Entity;
 
-import java.util.Calendar;
 import java.util.UUID;
-
-import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
-import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIBreakDoor;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
@@ -19,38 +15,33 @@ import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.ai.attributes.RangedAttribute;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntityCBZ extends EntityZombie
 {
-    protected static final RangedAttribute field_110186_bp = (new RangedAttribute("zombie.spawnReinforcements", 0.0D, 0.0D, 1.0D));
     private static final UUID field_110187_bq = UUID.fromString("B9766B59-9566-4402-BC1F-2EE2A276D836");
-    private static final AttributeModifier field_110188_br = new AttributeModifier(field_110187_bq, "Baby speed boost", 0.5D, 1);
+    @SuppressWarnings("unused")
+	private static final AttributeModifier field_110188_br = new AttributeModifier(field_110187_bq, "Baby speed boost", 0.5D, 1);
 
     /**
      * Ticker used to determine the time remaining for this zombie to convert into a villager when cured.
      */
     private int conversionTime;
 
-    public EntityCBZ(World par1World)
+    public EntityCBZ(World par1World, boolean field_146076_bu)
     {
         super(par1World);
-        this.getNavigator().setBreakDoors(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIBreakDoor(this));
         this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.0D, false));
@@ -61,8 +52,8 @@ public class EntityCBZ extends EntityZombie
         this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityVillager.class, 0, false));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true, field_146076_bu, null));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityVillager.class, 0, false, field_146076_bu, null));
     }
 
 
@@ -126,7 +117,7 @@ public class EntityCBZ extends EntityZombie
     {
         if (this.worldObj.isDaytime() && !this.worldObj.isRemote && !this.isChild())
         {
-            float f = this.getBrightness(1.0F);
+            this.getBrightness(1.0F);
 
 
                 if (getFlag(0))
@@ -138,32 +129,6 @@ public class EntityCBZ extends EntityZombie
         super.onLivingUpdate();
     }
 
-    /**
-     * Called when the entity is attacked.
-     */
-    public boolean attackEntityFrom(DamageSource par1DamageSource, float par2)
-    {
-        if (!super.attackEntityFrom(par1DamageSource, par2))
-        {
-            return false;
-        }
-        else
-        {
-            EntityLivingBase entitylivingbase = this.getAttackTarget();
-
-            if (entitylivingbase == null && this.getEntityToAttack() instanceof EntityLivingBase)
-            {
-                entitylivingbase = (EntityLivingBase)this.getEntityToAttack();
-            }
-
-            if (entitylivingbase == null && par1DamageSource.getEntity() instanceof EntityLivingBase)
-            {
-                entitylivingbase = (EntityLivingBase)par1DamageSource.getEntity();
-            }
-
-            return true;
-        }
-    }
 
     /**
      * Called to update the entity's position/logic.
@@ -305,7 +270,7 @@ public class EntityCBZ extends EntityZombie
     {
         super.onKillEntity(par1EntityLivingBase);
 
-            EntityCBZ entityzombie = new EntityCBZ(this.worldObj);
+            EntityCBZ entityzombie = new EntityCBZ(this.worldObj, addedToChunk);
             entityzombie.copyLocationAndAnglesFrom(par1EntityLivingBase);
             this.worldObj.removeEntity(par1EntityLivingBase);
             entityzombie.setVillager(true);
@@ -315,9 +280,7 @@ public class EntityCBZ extends EntityZombie
                 entityzombie.setChild(true);
             }
 
-            this.worldObj.spawnEntityInWorld(entityzombie);
-            this.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1016, (int)this.posX, (int)this.posY, (int)this.posZ, 0);
-        }
+            this.worldObj.spawnEntityInWorld(entityzombie);        }
     /**
      * Called when a player interacts with a mob. e.g. gets milk from a cow, gets into the saddle on a pig.
      */
@@ -407,6 +370,5 @@ public class EntityCBZ extends EntityZombie
         this.worldObj.removeEntity(this);
         this.worldObj.spawnEntityInWorld(entityvillager);
         entityvillager.addPotionEffect(new PotionEffect(Potion.confusion.id, 200, 0));
-        this.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1017, (int)this.posX, (int)this.posY, (int)this.posZ, 0);
     }
 }

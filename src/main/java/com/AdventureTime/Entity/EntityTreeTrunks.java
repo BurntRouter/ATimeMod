@@ -13,16 +13,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 public class EntityTreeTrunks extends EntityMob {
 	public String npcName;
 
 	public EntityTreeTrunks(World var1) {
 		super(var1);
-		this.getNavigator().setBreakDoors(true);
-		this.getNavigator().setAvoidsWater(true);
 		this.tasks.addTask(6, new EntityAIWander(this, 0.2D));
 		this.tasks.addTask(7, new EntityAIWatchClosest(this,
 				EntityPlayer.class, 8.0F));
@@ -69,7 +64,6 @@ public class EntityTreeTrunks extends EntityMob {
 	/**
 	 * Returns true if the newer Entity AI code should be run
 	 */
-	@Override
 	protected boolean isAIEnabled() {
 		return true;
 	}
@@ -133,7 +127,6 @@ public class EntityTreeTrunks extends EntityMob {
 		return EnumCreatureAttribute.UNDEAD;
 	}
 
-	@Override
 	protected void dropRareDrop(int var1) {
 		switch (this.rand.nextInt(3)) {
 		case 0:

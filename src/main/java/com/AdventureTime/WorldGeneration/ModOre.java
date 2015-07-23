@@ -8,7 +8,6 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
 public class ModOre implements IWorldGenerator{
@@ -32,12 +31,10 @@ public class ModOre implements IWorldGenerator{
 		for(int i = 0; i < spawnChance; i++){
 			int defaultChunkSize = 16;
 			
-			int xPos = posX + random.nextInt(defaultChunkSize);
-			int zPos = posZ + random.nextInt(defaultChunkSize);
-			int yPos = minY + random.nextInt(maxY - minY);
-			
-			new WorldGenMinable(block, (minVein + random.nextInt(maxVein - minVein)),blockspawn).generate(world, random, xPos, yPos, zPos);
-			
+			random.nextInt(defaultChunkSize);
+			random.nextInt(defaultChunkSize);
+			random.nextInt(maxY - minY);
+						
 		}
 	}
 	
