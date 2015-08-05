@@ -2,15 +2,11 @@
 /.settings/*
 /bin/*
 /eclipse/*
-/gradle/*
 
-*.bat
-*.sh
+*.
 *.txt
 *.classpath
 *.gitattributes
 !README.txt
-*.gradle
 *.project
-gradlew
 /bin/
