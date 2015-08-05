@@ -52,7 +52,7 @@ public class ClientProxy extends CommonProxy{
 		RenderingRegistry.registerEntityRenderingHandler(EntityFP.class,
 				new RenderFP(new ModelFP(), 0.8F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityBilly.class,
-				new RenderBilly(new ModelBilly(), 1.0F));
+				new RenderBilly(null, new ModelBilly(), 1.0F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityPB.class,
 				new RenderPB(new ModelPB(), 0.5F));
 //		RenderingRegistry.registerEntityRenderingHandler(EntityLich.class,
